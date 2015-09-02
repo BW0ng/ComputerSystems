@@ -1,0 +1,22 @@
+# Majority of 4 circuit where 2 1’s outputs a 1 (4 inputs, 1 output)
+
+	inputNames {a,b,c,d}
+	outputNames {out}
+	
+	# Line 6&11 producing 0 instead of 1
+	circuit AND ab {a,b}
+	circuit AND ac {a,c}
+	circuit AND ad {a,d}
+	circuit AND bc {b,c}
+	circuit AND bd {b,d}
+	circuit AND cd {c,d}
+	
+	circuit OR or1 {ab,ac}
+	circuit OR or2 {ad,bc}
+	circuit OR or3 {bd,cd}
+	
+	circuit OR and {or1,or2}
+	circuit OR done {and,or3}
+	
+	outputs {done}
+	

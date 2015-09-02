@@ -1,0 +1,13 @@
+#1 bit selector - select one of two input bits (2 data inputs, 1 control line input, 1 output)
+
+		inputNames {a,b,c}
+		outputNames {out}
+		
+		circuit NOT ~c {c}
+		
+		circuit AND a&~c {a,~c}
+		circuit AND b&c {b,c}
+		
+		circuit OR done {a&~c,b&c}
+		
+		outputs {done}

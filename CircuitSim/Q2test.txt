@@ -1,0 +1,18 @@
+
+
+testcase { 0000, 0}
+testcase { 0001, 0}
+testcase { 0010, 0}
+testcase { 0011, 1}
+testcase { 0100, 0}
+testcase { 0101, 1}
+testcase { 0110, 1}
+testcase { 0111, 1}
+testcase { 1000, 0}
+testcase { 1001, 1}
+testcase { 1010, 1}
+testcase { 1011, 1}
+testcase { 1100, 1}
+testcase { 1101, 1}
+testcase { 1110, 1}
+testcase { 1111, 1}

@@ -1,0 +1,10 @@
+#full adder test
+
+	testCase { 000, 00 }
+	testCase { 001, 01 }
+	testCase { 010, 01 }
+	testCase { 011, 10 }
+	testCase { 100, 01 }
+	testCase { 101, 10 }
+	testCase { 110, 10 }
+	testCase { 111, 11 }

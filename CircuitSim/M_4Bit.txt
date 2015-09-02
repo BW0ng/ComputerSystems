@@ -1,0 +1,23 @@
+# 4 bit multiplexer (4 inputs and 2 control lines, plus 1 output)
+
+	inputNames {a,b,c,d,s1,s0}
+	outputNames {out}
+	
+	circuit NOT ~s1 {s1}
+	circuit NOT ~s0 {s0}
+	
+	circuit AND anda {~s1,~s0}
+	circuit AND and1 {anda,a}
+	circuit AND andb {~s1,s0}
+	circuit AND and2 {andb,b}
+	circuit AND andc {s1,~s0}
+	circuit AND and3 {andc,c}
+	circuit AND andd {s1,s0}
+	circuit AND and4 {andd,d}
+	
+	circuit OR or1 {and1,and2}
+	circuit OR or2 {and3,and4}
+	
+	circuit OR done {or1,or2}
+	
+	outputs {done}

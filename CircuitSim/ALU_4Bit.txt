@@ -1,0 +1,14 @@
+# 4 bit ALU
+	# 1 Bit ALU
+	#inputNames {f1, f0, inva, invb, cin, a0, b0}
+	#outputNames {cout, s0}
+
+	inputNames {f1, f0, inva, invb, cin, a3, a2, a1, a0, b3, b2, b1, b0}
+	outputNames {cout, s3, s2, s1, s0}
+	
+	circuit ALU_1Bit alu0 {f1,f0,inva,invb,cin,a0,b0}
+	circuit ALU_1Bit alu1 {f1,f0,inva,invb,alu0.cout,a1,b1}
+	circuit ALU_1Bit alu2 {f1,f0,inva,invb,alu1.cout,a2,b3}
+	circuit ALU_1Bit alu3 {f1,f0,inva,invb,alu2.cout,a3,b3}
+	
+	outputs {alu3.cout,alu0.s0,alu1.s0,alu2.s0,alu3.s0}

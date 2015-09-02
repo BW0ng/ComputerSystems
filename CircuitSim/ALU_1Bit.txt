@@ -1,0 +1,17 @@
+# 1 bit ALU (7 inputs: F1, F0, INVA, INVB, CIN, A0, B0), (2 outputs: COUT, S0). See 4-bit ALU for description of inputs.
+
+	inputNames {f1, f0, inva, invb, cin, a0, b0}
+	outputNames {cout, s0}
+
+	circuit XOR a {a0,inva}
+	circuit XOR b {b0,invb}
+
+	circuit AND and {a,b}
+	circuit OR or {a,b}
+	circuit XOR xor {a,b}
+
+	circuit FULLADDER fa {a,b,cin}
+
+	circuit M_4Bit multi {and,or,xor,fa.carry,f0,f1}
+
+	outputs {fa.sum,multi}

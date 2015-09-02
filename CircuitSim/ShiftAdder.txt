@@ -1,0 +1,23 @@
+# Shidt Adder
+
+  inputNames {a15,a14,a13,a12,a11,a10,a9,a8,a7,a6,a5,a4,a3,a2,a1,a0,b}
+  outputNames {out[7:0] }
+
+  circuit AND and15 {a15,b}
+  circuit AND and14 {a14,b}
+  circuit AND and13 {a13,b}
+  circuit AND and12 {a12,b}
+  circuit AND and11 {a11,b}
+  circuit AND and10 {a10,b}
+  circuit AND and9 {a9,b}
+  circuit AND and8 {a8,b}
+  circuit AND and7 {a7,b}
+  circuit AND and6 {a6,b}
+  circuit AND and5 {a5,b}
+  circuit AND and4 {a4,b}
+  circuit AND and3 {a3,b}
+  circuit AND and2 {a2,b}
+  circuit AND and1 {a1,b}
+  circuit AND and0 {a0,b}
+
+  outputs {and[15:0] }

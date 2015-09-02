@@ -1,0 +1,35 @@
+# Multiplexer for CSA_8Bit.txt
+
+	inputNames {a,b,c}
+	outputNames {out}
+	
+	circuit NOT ~a {a}
+	circuit NOT ~b {b}
+	circuit NOT ~c {c}
+	
+	circuit AND anda {~a,~b}
+	circuit AND g1 {anda,~c}
+	circuit AND andb {~a,~b}
+	circuit AND g2 {andb,c}
+	circuit AND andc {~a,b}
+	circuit AND g3 {andc,~c}
+	circuit AND andd {~a,b}
+	circuit AND g4 {andd,c}
+	circuit AND ande {a,~b}
+	circuit AND g5 {ande,~c}
+	circuit AND andf {a,~b}
+	circuit AND g6 {andf,c}
+	circuit AND andg {a,b}
+	circuit AND g7 {andg,~c}
+	circuit AND andh {a,b}
+	circuit AND g8 {andh,c}
+	
+	circuit OR or1 {g1,g2}
+	circuit OR or2 {g3,g4}
+	circuit OR or3 {g5,g6}
+	circuit OR or4 {g7,g8}
+	circuit OR or5 {or1,or2}
+	circuit OR or6 {or3,or4}
+	circuit OR or7 {or5,or6}
+	
+	outputs {or7}

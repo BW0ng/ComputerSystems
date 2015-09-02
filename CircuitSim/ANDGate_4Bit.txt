@@ -1,0 +1,10 @@
+# 4 bit AND gate
+	
+	inputNames {a,b,c,d}
+	outputNames {out}
+	
+	circuit AND a&b {a,b}
+	circuit AND c&d {c,d}
+	circuit AND done {a&b,c&d}
+	
+	outputs {done}

@@ -1,0 +1,12 @@
+			# NAND gate: C = ~(A&B)
+		    inputNames { A, B }
+		    outputNames { C }
+
+		    truthTable {
+		    0 0, 1
+		    0 1, 1
+		    1 0, 1
+		    1 1, 0
+			}
+	
+			4propagationDelay { 1 }

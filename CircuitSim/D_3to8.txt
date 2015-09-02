@@ -1,0 +1,27 @@
+# 3 to 8 decoder (3 inputs, 8 outputs)
+
+	inputNames {a,b,c}
+	outputNames {d7,d6,d5,d4,d3,d2,d1,d0}
+	
+	circuit NOT ~a {a}
+	circuit NOT ~b {b}
+	circuit NOT ~c {c}
+	
+	circuit AND anda {~a,~b}
+	circuit AND and0 {anda,~c}
+	circuit AND andb {~a,~b}
+	circuit AND and1 {andb,c}
+	circuit AND andc {~a,b}
+	circuit AND and2 {andc,~c}
+	circuit AND andd {~a,b}
+	circuit AND and3 {andd,c}
+	circuit AND ande {a,~b}
+	circuit AND and4 {ande,~c}
+	circuit AND andf {a,~b}
+	circuit AND and5 {andf,c}
+	circuit AND andg {a,b}
+	circuit AND and6 {andg,~c}
+	circuit AND andh {a,b}
+	circuit AND and7 {andh,c}
+	
+	outputs {and7,and6,and5,and4,and3,and2,and1,and0}
