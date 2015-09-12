@@ -1,40 +1,55 @@
 # Right Shifter 1_Bit
 
 	inputNames {x15,x14,x13,x12,x11,x10,x9,x8,x7,x6,x5,x4,x3,x2,x1,x0,s}
-	outputNames {out[15:0] }
+	outputNames { out[15:0] }
 
 	circuit NOT ~s {s}
 
 	circuit AND and31 {0,s}
 	circuit AND and30 {x15,~s}
+
 	circuit AND and29 {x15,s}
 	circuit AND and28 {x14,~s}
+
 	circuit AND and27 {x14,s}
 	circuit AND and26 {x13,~s}
+
 	circuit AND and25 {x13,s}
 	circuit AND and24 {x12,~s}
+
 	circuit AND and23 {x12,s}
 	circuit AND and22 {x11,~s}
+
 	circuit AND and21 {x11,s}
 	circuit AND and20 {x10,~s}
+
 	circuit AND and19 {x10,s}
 	circuit AND and18 {x9,~s}
+
 	circuit AND and17 {x9,s}
 	circuit AND and16 {x8,~s}
+
 	circuit AND and15 {x8,s}
 	circuit AND and14 {x7,~s}
+
 	circuit AND and13 {x7,s}
 	circuit AND and12 {x6,~s}
+
 	circuit AND and11 {x6,s}
 	circuit AND and10 {x5,~s}
+
 	circuit AND and9 {x5,s}
 	circuit AND and8 {x4,~s}
+
 	circuit AND and7 {x4,s}
 	circuit AND and6 {x3,~s}
+
 	circuit AND and5 {x3,s}
 	circuit AND and4 {x2,~s}
+
 	circuit AND and3 {x2,s}
 	circuit AND and2 {x1,~s}
+
 	circuit AND and1 {x1,s}
 	circuit AND and0 {x0,~s}
 

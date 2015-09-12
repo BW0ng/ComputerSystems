@@ -1,0 +1,15 @@
+#ALU
+
+inputNames { f1,f0,inva,invb,cin, a[31:0] , b[31:0] }
+outputNames {cout, out[31:0]}
+
+circuit ALU4 al1 {f1,f0,inva,invb,cin, a[31:28], b[31:28] }
+circuit ALU4 al2 {f1,f0,inva,invb,al1.cout, a[29:24], b[29:24] }
+circuit ALU4 al3 {f1,f0,inva,invb,al2.cout, a[23:20], b[23:20] }
+circuit ALU4 al4 {f1,f0,inva,invb,al3.cout, a[19:16], b[19:16] }
+circuit ALU4 al5 {f1,f0,inva,invb,al4.cout, a[15:12], b[15:12] }
+circuit ALU4 al6 {f1,f0,inva,invb,al5.cout, a[11:8], b[11:8] }
+circuit ALU4 al7 {f1,f0,inva,invb,al6.cout, a[7:4], b[7:4] }
+circuit ALU4 al8 {f1,f0,inva,invb,al7.cout, a[3:0], b[3:0] }
+
+outputs { al8.cout , al1.s[3:0] , al2.s[3:0] , al3.s[3:0] , al4.s[3:0] , al5.s[3:0] , al6.s[3:0] , al7.s[3:0] , al8.s[3:0] }

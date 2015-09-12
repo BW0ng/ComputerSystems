@@ -1,0 +1,142 @@
+
+MIPS CPU Units
+
+This describes one possible way to make the circuit for the MIPS CPU 
+assignment. You are not required to do it this way, but you must use 
+MIPSCPUbase.txt.
+
+-----------------------------------------------------------------------------
+Part 1: The Starter file
+-----------------------------------------------------------------------------
+
+The starter file has 96 inputs and 32 outputs.
+The inputs are as follows:
+
+32 inputs for the instruction, including:
+op5..op0 - the high order bits, indicating the instruction
+rs4..rs0 - the s register bits (ignored for our purposes)
+rt4..rt0 - the t register bits (ignored for our purposes)
+rd4..rd0 - the d register bits (ignored for our purposes)
+sh4..sh0 - the shift amount (used for sll)
+f5 ..f0  - the low order bits, also part of the instruction encoding
+
+The low order 16 bits are renamed (using the WIRE circuit) to
+be accessible through the names: 
+im15..im0 - used for the immediate
+
+32 inputs for the s register
+s31..s0
+
+32 inputs for the t register
+t31..t0
+
+-----------------------------------------------------------------------------
+Part 2: Circuits you might define for the CPU
+-----------------------------------------------------------------------------
+
+Useful to Have:
+---------------
+MUX2 - select between 2 signals
+ALU1 - compute 1 bit of the ALU operation
+Select32 - Selects 32 out of 64 signals
+	Could be used for TSelect, ShiftLeft32 and OutputSelect
+
+Main Subunits:
+--------------
+Decoder unit
+TSelect unit
+ALU32 unit
+ShiftControlSelect unit
+ShiftLeft32 unit
+OutputSelect unit
+Multiplier unit
+
+Decoder unit
+------------
+Purpose: 
+	Decode the MIPS instruction based on the opcode and funct fields.
+	Send out control lines to control the "ALU32" unit, "TSelect" unit, 
+	"ShiftControlSelect" unit, And "OutputSelect" unit.
+Inputs (32): 
+	The 32 bits of the instruction
+Outputs (10): 
+	F1, F0, INVA, INVB, CIN: Control lines for ALU 
+	selectImm: Whether to use the immediate argument or the t register
+	signExtend: Whether to sign-extend the immediate argument
+	selectShamt: Whether to use the immediate shift amount (sh4 .. sh0) 
+		or the variable amount (t4..t0) to control the shifter
+	selectALU: Whether to choose the ALU or Shifter for the final output
+	selectMutlipy: Whether to choose the multiply unit as the final output
+	
+TSelect unit
+------------	
+Purpose:
+	Select (MUX) between the t inputs and the immediate input.
+	Also, sign-extend the immediate value (or not) as needed.
+Inputs (50):
+	t31..t0: The t register
+	im15..im0: The immediate value
+	selectImm: Whether we should output the immediate or t
+	signExtend: Whether to sign extend an immediate
+Outputs (32):
+	T31..T0: Either t is passed through unchanged, or
+		(if sign extended) im15 is hooked to T31..T16
+		(if not sign extended) T31..T16 are set to 0
+		and im15..im0 are hooked to T15..T0.
+		
+ALU32 unit
+----------
+Purpose:
+	Compute the ALU ops (+, AND, OR, XOR)
+Inputs (69):
+	s31..s0: The s register
+	T31..T0: The t register (outputs from TSelect.  Not the same as t31..t0!)
+	F1, F0, INVA, INVB, CIN: control lines
+Outputs (32):
+	A31..A0: The results of the ALU operation
+	
+ShiftControlSelect unit
+-----------------------
+Purpose:
+	Determine the control lines for the shifter
+Inputs (11):
+	sh4..sh0: The immediate shift amount from the instruction
+	t4..t0: The variable shift amount from the t register
+	selectShamt: Whether to choose sh or t
+Outputs (5):
+	shmt4..shmt0: The control lines for Shift32
+
+ShiftRight32 unit
+-----------------
+Purpose:
+	Shift a 32 bit word right by an amount specified in the control lines
+Inputs (37):
+	s31..s0: The word that will be shifted
+	shmt4..shmt0: The shift amount, where shmt4 equates to shift by 16,
+		and shmt0 equates to shift by 1.
+Outputs (32):
+	H31..H0: The shifted word
+
+Multiply unit
+-------------
+Purpose:
+	Multiply the S and T registers
+Inputs (64):
+	s31..s0, t31..t0
+Outputs (32):
+	M31..M0: the result of the multiply
+	
+OutputSelect unit
+-----------------
+Purpose:
+	Chooses (MUX) between the output of the shifter and the output
+	of the ALU for the final circuit output.
+Inputs (65):
+	A31..A0: The outputs of the ALU
+	H31..H0: The outputs of the shifter
+	selectALU: Whether to select the ALU or shifter inputs
+Outputs (32):
+	X31..X0: A31..A0 or H31..H0 are copied based on selectALU
+
+	
+	

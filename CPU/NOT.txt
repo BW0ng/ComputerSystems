@@ -1,0 +1,7 @@
+# NOT gate: B = ~A, made from a NAND gate
+			inputNames { A }
+			outputNames { B }
+
+			circuit NAND ~A { A, A }
+
+			outputs { ~A.C }

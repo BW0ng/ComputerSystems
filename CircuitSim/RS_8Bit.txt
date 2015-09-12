@@ -1,42 +1,57 @@
 # Right Shift 8_Bit
 
-	inputNames {s,x15,x14,x13,x12,x11,x10,x9,x8,x7,x6,x5,x4,x3,x2,x1,x0}
+	inputNames {x15,x14,x13,x12,x11,x10,x9,x8,x7,x6,x5,x4,x3,x2,x1,x0,s}
 	outputNames { out[15:0] }
 
 	circuit NOT ~s {s}
 
 	circuit AND and31 {0,s}
 	circuit AND and30 {x15,~s}
-	circuit AND and29 {x14,s}
-	circuit AND and28 {x13,~s}
-	circuit AND and27 {x12,s}
-	circuit AND and26 {x11,~s}
-	circuit AND and25 {x10,s}
-	circuit AND and24 {x9,~s}
+
+	circuit AND and29 {0,s}
+	circuit AND and28 {x14,~s}
+
+	circuit AND and27 {0,s}
+	circuit AND and26 {x13,~s}
+
+	circuit AND and25 {0,s}
+	circuit AND and24 {x12,~s}
+
 	circuit AND and23 {0,s}
-	circuit AND and22 {x15,~s}
-	circuit AND and21 {x14,s}
-	circuit AND and20 {x13,~s}
-	circuit AND and19 {x12,s}
-	circuit AND and18 {x11,~s}
-	circuit AND and17 {x10,s}
-	circuit AND and16 {x9,~s}
-	circuit AND and15 {x8,s}
+	circuit AND and22 {x11,~s}
+
+	circuit AND and21 {0,s}
+	circuit AND and20 {x10,~s}
+
+	circuit AND and19 {0,s}
+	circuit AND and18 {x9,~s}
+
+	circuit AND and17 {0,s}
+	circuit AND and16 {x8,~s}
+
+	circuit AND and15 {x15,s}
 	circuit AND and14 {x7,~s}
-	circuit AND and13 {x6,s}
-	circuit AND and12 {x5,~s}
-	circuit AND and11 {x4,s}
-	circuit AND and10 {x3,~s}
-	circuit AND and9 {x2,s}
-	circuit AND and8 {x1,~s}
-	circuit AND and7 {x8,s}
-	circuit AND and6 {x7,~s}
-	circuit AND and5 {x6,s}
-	circuit AND and4 {x5,~s}
-	circuit AND and3 {x4,s}
-	circuit AND and2 {x3,~s}
-	circuit AND and1 {x2,s}
-	circuit AND and0 {x1,~s}
+
+	circuit AND and13 {x14,s}
+	circuit AND and12 {x6,~s}
+
+	circuit AND and11 {x13,s}
+	circuit AND and10 {x5,~s}
+
+	circuit AND and9 {x12,s}
+	circuit AND and8 {x4,~s}
+
+	circuit AND and7 {x11,s}
+	circuit AND and6 {x3,~s}
+
+	circuit AND and5 {x10,s}
+	circuit AND and4 {x2,~s}
+
+	circuit AND and3 {x9,s}
+	circuit AND and2 {x1,~s}
+
+	circuit AND and1 {x8,s}
+	circuit AND and0 {x0,~s}
 
 	circuit OR or15 {and31,and30}
 	circuit OR or14 {and29,and28}

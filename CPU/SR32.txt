@@ -1,0 +1,12 @@
+#ShiftLeft32 unit
+
+  inputNames { s[31:0], shmt[4:0] }
+  outputNames { out[31:0] }
+
+  circuit RS1bit rs1 { s[31:0], shmt0 }
+  circuit RS2Bit rs2 { rs1.out[31:0],shmt1 }
+  circuit RS4bit rs4 { rs2.out[31:0],shmt2 }
+  circuit RS8bit rs8 { rs4.out[31:0],shmt3 }
+  circuit RS16bit rs16 { rs8.out[31:0],shmt4 }
+
+  outputs { rs16.out[31:0] }

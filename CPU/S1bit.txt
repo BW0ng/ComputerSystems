@@ -1,0 +1,41 @@
+#Shifter 1 bit
+
+
+inputNames { a[31:0] , b }
+outputNames { out[31:0] }
+
+circuit AND x31 {a31,b}
+circuit AND x30 {a30,b}
+circuit AND x29 {a29,b}
+circuit AND x28 {a28,b}
+circuit AND x27 {a27,b}
+circuit AND x26 {a26,b}
+circuit AND x25 {a25,b}
+circuit AND x24 {a24,b}
+circuit AND x23 {a23,b}
+circuit AND x22 {a22,b}
+circuit AND x21 {a21,b}
+circuit AND x20 {a20,b}
+circuit AND x19 {a19,b}
+circuit AND x18 {a18,b}
+circuit AND x17 {a17,b}
+circuit AND x16 {a16,b}
+circuit AND x15 {a15,b}
+circuit AND x14 {a14,b}
+circuit AND x13 {a13,b}
+circuit AND x12 {a12,b}
+circuit AND x11 {a11,b}
+circuit AND x10 {a10,b}
+circuit AND x9 {a9,b}
+circuit AND x8 {a8,b}
+circuit AND x7 {a7,b}
+circuit AND x6 {a6,b}
+circuit AND x5 {a5,b}
+circuit AND x4 {a4,b}
+circuit AND x3 {a3,b}
+circuit AND x2 {a2,b}
+circuit AND x1 {a1,b}
+circuit AND x0 {a0,b}
+
+
+outputs { x[31:0] }

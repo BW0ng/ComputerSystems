@@ -1,0 +1,38 @@
+
+# MIPS CPU (Partial)
+# This version of the CPU has 96 inputs:
+#   * a 32-bit instruction word (op, rs, rt, rd, sh, f) 
+#   * two 32-bit data words that act as proxies for the 
+#     s and t register values (s0 ... s31), (t0 ... t31).
+# There are 32 outputs, for the output word (o0 ... o31).
+
+inputNames 
+{ 
+	op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0],  # instruction word
+	s[31:0], # s word
+	t[31:0]  # t word
+}
+
+outputNames 
+{
+	o[31:0] # output word
+}
+
+# immediate (renamed from inputs using a "WIRE")
+circuit WIRE im15 { rd4 }
+circuit WIRE im14 { rd3 }
+circuit WIRE im13 { rd2 }
+circuit WIRE im12 { rd1 }
+circuit WIRE im11 { rd0 }
+circuit WIRE im10 { sh4 }
+circuit WIRE im9  { sh3 }
+circuit WIRE im8  { sh2 }
+circuit WIRE im7  { sh1 }
+circuit WIRE im6  { sh0 }
+circuit WIRE im5  { f5 }
+circuit WIRE im4  { f4 }
+circuit WIRE im3  { f3 }
+circuit WIRE im2  { f2 }
+circuit WIRE im1  { f1 }
+circuit WIRE im0  { f0 }
+

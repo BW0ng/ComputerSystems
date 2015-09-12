@@ -1,0 +1,16 @@
+#Full Adder
+
+	inputNames {a,b,c}
+	outputNames {carry,sum}
+
+	circuit AND ab {a,b}
+	circuit AND ac {a,c}
+	circuit AND bc {b,c}
+	circuit OR o1 {ab,ac}
+	circuit OR o2 {o1,bc}
+	circuit XOR x1 {a,b}
+	circuit XOR x2 {x1,c}
+
+	outputs{o2,x2}
+
+	

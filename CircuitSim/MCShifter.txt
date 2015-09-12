@@ -1,0 +1,15 @@
+# MCShifter
+
+inputNames {a7,a6,a5,a4,a3,a2,a1,a0,b }
+outputNames {out7, out6, out5, out4, out3, out2, out1, out0 }
+
+circuit AND x7 {a7,b}
+circuit AND x6 {a6,b}
+circuit AND x5 {a5,b}
+circuit AND x4 {a4,b}
+circuit AND x3 {a3,b}
+circuit AND x2 {a2,b}
+circuit AND x1 {a1,b}
+circuit AND x0 {a0,b}
+
+outputs { x[7:0] }

@@ -1,0 +1,137 @@
+#Right Shifter 8 bit
+
+  inputNames { s[31:0], shmt }
+  outputNames { out[31:0] }
+
+  circuit NOT ~shmt {shmt}
+
+  circuit AND and31 {0,shmt}
+  circuit AND an~31 {s31,~shmt}
+
+  circuit AND and30 {0,shmt}
+  circuit AND an~30 {s30,~shmt}
+
+  circuit AND and29 {0,shmt}
+  circuit AND an~29 {s29,~shmt}
+
+  circuit AND and28 {0,shmt}
+  circuit AND an~28 {s28,~shmt}
+
+  circuit AND and27 {0,shmt}
+  circuit AND an~27 {s27,~shmt}
+
+  circuit AND and26 {0,shmt}
+  circuit AND an~26 {s26,~shmt}
+
+  circuit AND and25 {0,shmt}
+  circuit AND an~25 {s25,~shmt}
+
+  circuit AND and24 {0,shmt}
+  circuit AND an~24 {s24,~shmt}
+
+  circuit AND and23 {s31,shmt}
+  circuit AND an~23 {s23,~shmt}
+
+  circuit AND and22 {s30,shmt}
+  circuit AND an~22 {s22,~shmt}
+
+  circuit AND and21 {s29,shmt}
+  circuit AND an~21 {s21,~shmt}
+
+  circuit AND and20 {s28,shmt}
+  circuit AND an~20 {s20,~shmt}
+
+  circuit AND and19 {s27,shmt}
+  circuit AND an~19 {s19,shmt}
+
+  circuit AND and18 {s26,shmt}
+  circuit AND an~18 {s18,~shmt}
+
+  circuit AND and17 {s25,shmt}
+  circuit AND an~17 {s17,~shmt}
+
+  circuit AND and16 {s24,shmt}
+  circuit AND an~16 {s16,~shmt}
+
+  circuit AND and15 {s23,shmt}
+  circuit AND an~15 {s15,~shmt}
+
+  circuit AND and14 {s22,shmt}
+  circuit AND an~14 {s14,~shmt}
+
+  circuit AND and13 {s21,shmt}
+  circuit AND an~13 {s13,~shmt}
+
+  circuit AND and12 {s20,shmt}
+  circuit AND an~12 {s12,~shmt}
+
+  circuit AND and11 {s19,shmt}
+  circuit AND an~11 {s11,~shmt}
+
+  circuit AND and10 {s18,shmt}
+  circuit AND an~10 {s10,~shmt}
+
+  circuit AND and9 {s17,shmt}
+  circuit AND an~9 {s9,~shmt}
+
+  circuit AND and8 {s16,shmt}
+  circuit AND an~8 {s8,~shmt}
+
+  circuit AND and7 {s15,shmt}
+  circuit AND an~7 {s7,~shmt}
+
+  circuit AND and6 {s14,shmt}
+  circuit AND an~6 {s6,~shmt}
+
+  circuit AND and5 {s13,shmt}
+  circuit AND an~5 {s5,~shmt}
+
+  circuit AND and4 {s12,shmt}
+  circuit AND an~4 {s4,~shmt}
+
+  circuit AND and3 {s11,shmt}
+  circuit AND an~3 {s3,~shmt}
+
+  circuit AND and2 {s10,shmt}
+  circuit AND an~2 {s2,~shmt}
+
+  circuit AND and1 {s9,shmt}
+  circuit AND an~1 {s1,~shmt}
+
+  circuit AND and0 {s8,shmt}
+  circuit AND an~0 {s0,~shmt}
+
+  circuit OR or31 {and31,an~31}
+  circuit OR or30 {and30,an~30}
+  circuit OR or29 {and29,an~29}
+  circuit OR or28 {and28,an~28}
+  circuit OR or27 {and27,an~27}
+  circuit OR or26 {and26,an~26}
+  circuit OR or25 {and25,an~25}
+  circuit OR or24 {and24,an~24}
+  circuit OR or23 {and23,an~23}
+  circuit OR or22 {and22,an~22}
+  circuit OR or21 {and21,an~21}
+  circuit OR or20 {and20,an~20}
+  circuit OR or19 {and19,an~19}
+  circuit OR or18 {and18,an~18}
+  circuit OR or17 {and17,an~17}
+  circuit OR or16 {and16,an~16}
+  circuit OR or15 {and15,an~15}
+  circuit OR or14 {and14,an~14}
+  circuit OR or13 {and13,an~13}
+  circuit OR or12 {and12,an~12}
+  circuit OR or11 {and11,an~11}
+  circuit OR or10 {and10,an~10}
+  circuit OR or9 {and9,an~9}
+  circuit OR or8 {and8,an~8}
+  circuit OR or7 {and7,an~7}
+  circuit OR or6 {and6,an~6}
+  circuit OR or5 {and5,an~5}
+  circuit OR or4 {and4,an~4}
+  circuit OR or3 {and3,an~3}
+  circuit OR or2 {and2,an~2}
+  circuit OR or1 {and1,an~1}
+  circuit OR or0 {and0,an~0}
+
+  outputs { or[31:0] }

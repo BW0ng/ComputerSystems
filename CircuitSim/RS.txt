@@ -3,10 +3,10 @@
 	inputNames {x15,x14,x13,x12,x11,x10,x9,x8,x7,x6,x5,x4,x3,x2,x1,x0,s3,s2,s1,s0}
 	outputNames {out[15:0] }
 
-	circuit RS_1Bit rs1 {x[15:0] , s0}
-	circuit RS_2Bit rs2 {rs1.out[15:0] ,s1}
-	circuit RS_4Bit rs4 {rs2.out[15:0] ,s2}
-	circuit RS_8Bit rs8 {rs4.out[15:0] ,s3}
+	circuit RS_1Bit rs1 {x[15:0],s0}
+	circuit RS_2Bit rs2 {rs1.out[15:0],s1}
+	circuit RS_4Bit rs4 {rs2.out[15:0],s2}
+	circuit RS_8Bit rs8 {rs4.out[15:0],s3}
 
 
 

@@ -1,0 +1,39 @@
+#Ripple Carry Adder
+
+inputNames { a[31:0],b[31:0] }
+outputNames { out[31:0] }
+
+circuit FA fa0 {a0,b0,0}
+circuit FA fa1 {a1,b1,fa0.carry}
+circuit FA fa2 {a2,b2,fa1.carry}
+circuit FA fa3 {a3,b3,fa2.carry}
+circuit FA fa4 {a4,b4,fa3.carry}
+circuit FA fa5 {a5,b5,fa4.carry}
+circuit FA fa6 {a6,b6,fa5.carry}
+circuit FA fa7 {a7,b7,fa6.carry}
+circuit FA fa8 {a8,b8,fa7.carry}
+circuit FA fa9 {a9,b9,fa8.carry}
+circuit FA fa10 {a10,b10,fa9.carry}
+circuit FA fa11 {a11,b11,fa10.carry}
+circuit FA fa12 {a12,b12,fa11.carry}
+circuit FA fa13 {a13,b13,fa12.carry}
+circuit FA fa14 {a14,b14,fa13.carry}
+circuit FA fa15 {a15,b15,fa14.carry}
+circuit FA fa16 {a16,b16,fa15.carry}
+circuit FA fa17 {a17,b17,fa16.carry}
+circuit FA fa18 {a18,b18,fa17.carry}
+circuit FA fa19 {a19,b19,fa18.carry}
+circuit FA fa20 {a20,b20,fa19.carry}
+circuit FA fa21 {a21,b21,fa20.carry}
+circuit FA fa22 {a22,b22,fa21.carry}
+circuit FA fa23 {a23,b23,fa22.carry}
+circuit FA fa24 {a24,b24,fa23.carry}
+circuit FA fa25 {a25,b25,fa24.carry}
+circuit FA fa26 {a26,b26,fa25.carry}
+circuit FA fa27 {a27,b27,fa26.carry}
+circuit FA fa28 {a28,b28,fa27.carry}
+circuit FA fa29 {a29,b29,fa28.carry}
+circuit FA fa30 {a30,b30,fa29.carry}
+circuit FA fa31 {a31,b31,fa30.carry}
+
+outputs { fa[31:0].sum }

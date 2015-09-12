@@ -10,8 +10,8 @@
 	circuit OR or {a,b}
 	circuit XOR xor {a,b}
 
-	circuit FULLADDER fa {a,b,cin}
+	circuit FA fa {a,b,cin}
 
-	circuit M_4Bit multi {fa.sum, and, or, xor, f1,f0}
+	circuit MUX4bit multi {fa.sum, and, or, xor, f1,f0}
 
 	outputs {fa.carry,multi}

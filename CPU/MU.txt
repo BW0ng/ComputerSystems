@@ -1,0 +1,75 @@
+# 32 bit Multiplier Unit
+
+  inputNames { s[31:0], t[31:0] }
+  outputNames { out[31:0] }
+
+  circuit S1bit shifter31 { s[31:0], t0 }
+  circuit S1bit shifter30 { s[30:0],0, t1 }
+  circuit S1bit shifter29 { s[29:0],0,0, t2 }
+  circuit S1bit shifter28 { s[28:0],0,0,0, t3 }
+  circuit S1bit shifter27 { s[27:0],0,0,0,0, t4 }
+  circuit S1bit shifter26 { s[26:0],0,0,0,0,0, t5 }
+  circuit S1bit shifter25 { s[25:0],0,0,0,0,0,0, t6 }
+  circuit S1bit shifter24 { s[24:0],0,0,0,0,0,0,0, t7 }
+  circuit S1bit shifter23 { s[23:0],0,0,0,0,0,0,0,0, t8 }
+  circuit S1bit shifter22 { s[22:0],0,0,0,0,0,0,0,0,0, t9 }
+  circuit S1bit shifter21 { s[21:0],0,0,0,0,0,0,0,0,0,0, t10 }
+  circuit S1bit shifter20 { s[20:0],0,0,0,0,0,0,0,0,0,0,0, t11 }
+  circuit S1bit shifter19 { s[19:0],0,0,0,0,0,0,0,0,0,0,0,0, t12 }
+  circuit S1bit shifter18 { s[18:0],0,0,0,0,0,0,0,0,0,0,0,0,0, t13 }
+  circuit S1bit shifter17 { s[17:0],0,0,0,0,0,0,0,0,0,0,0,0,0,0, t14 }
+  circuit S1bit shifter16 { s[16:0],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, t15 }
+  circuit S1bit shifter15 { s[15:0],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, t16 }
+  circuit S1bit shifter14 { s[14:0],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, t17 }
+  circuit S1bit shifter13 { s[13:0],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, t18 }
+  circuit S1bit shifter12 { s[12:0],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, t19 }
+  circuit S1bit shifter11 { s[11:0],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, t20 }
+  circuit S1bit shifter10 { s[10:0],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, t21 }
+  circuit S1bit shifter9 { s[9:0],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, t22 }
+  circuit S1bit shifter8 { s[8:0],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, t23 }
+  circuit S1bit shifter7 { s[7:0],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, t24 }
+  circuit S1bit shifter6 { s[6:0],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, t25 }
+  circuit S1bit shifter5 { s[5:0],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, t26 }
+  circuit S1bit shifter4 { s[4:0],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, t27 }
+  circuit S1bit shifter3 { s[3:0],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, t28 }
+  circuit S1bit shifter2 { s[2:0],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, t29 }
+  circuit S1bit shifter1 { s[1:0],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, t30 }
+  circuit S1bit shifter0 { s0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, t31 }
+
+  circuit RCA rca0 { shifter31.out[31:0] , shifter30.out[31:0] }
+  circuit RCA rca1 { shifter29.out[31:0] , shifter28.out[31:0] }
+  circuit RCA rca2 { shifter27.out[31:0] , shifter26.out[31:0] }
+  circuit RCA rca3 { shifter25.out[31:0] , shifter24.out[31:0] }
+  circuit RCA rca4 { shifter23.out[31:0] , shifter22.out[31:0] }
+  circuit RCA rca5 { shifter21.out[31:0] , shifter20.out[31:0] }
+  circuit RCA rca6 { shifter19.out[31:0] , shifter18.out[31:0] }
+  circuit RCA rca7 { shifter17.out[31:0] , shifter16.out[31:0] }
+  circuit RCA rca8 { shifter15.out[31:0] , shifter14.out[31:0] }
+  circuit RCA rca9 { shifter13.out[31:0] , shifter12.out[31:0] }
+  circuit RCA rca10 { shifter11.out[31:0] , shifter10.out[31:0] }
+  circuit RCA rca11 { shifter9.out[31:0] , shifter8.out[31:0] }
+  circuit RCA rca12 { shifter7.out[31:0] , shifter6.out[31:0] }
+  circuit RCA rca13 { shifter5.out[31:0] , shifter4.out[31:0] }
+  circuit RCA rca14 { shifter3.out[31:0] , shifter2.out[31:0] }
+  circuit RCA rca15 { shifter1.out[31:0] , shifter0.out[31:0] }
+
+  circuit RCA rca20 { rca0.out[31:0] , rca1.out[31:0] }
+  circuit RCA rca21 { rca2.out[31:0] , rca3.out[31:0] }
+  circuit RCA rca22 { rca4.out[31:0] , rca5.out[31:0] }
+  circuit RCA rca23 { rca6.out[31:0] , rca7.out[31:0] }
+  circuit RCA rca24 { rca8.out[31:0] , rca9.out[31:0] }
+  circuit RCA rca25 { rca10.out[31:0] , rca11.out[31:0] }
+  circuit RCA rca26 { rca12.out[31:0] , rca13.out[31:0] }
+  circuit RCA rca27 { rca14.out[31:0] , rca15.out[31:0] }
+
+  circuit RCA rca30 { rca20.out[31:0] , rca21.out[31:0] }
+  circuit RCA rca31 { rca22.out[31:0] , rca23.out[31:0] }
+  circuit RCA rca32 { rca24.out[31:0] , rca25.out[31:0] }
+  circuit RCA rca33 { rca26.out[31:0] , rca27.out[31:0] }
+
+  circuit RCA rca40 { rca30.out[31:0] , rca31.out[31:0] }
+  circuit RCA rca41 { rca32.out[31:0] , rca33.out[31:0] }
+
+  circuit RCA rca50 { rca40.out[31:0] , rca41.out[31:0] }
+
+  outputs { rca50.out[31:0] }

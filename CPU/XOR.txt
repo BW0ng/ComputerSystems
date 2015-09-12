@@ -1,0 +1,11 @@
+# XOR made from 4 NAND gates
+	
+	inputNames { a, b }
+	outputNames { c }
+
+	circuit NAND ~(a&b) { a,b }
+	circuit NAND a&~(a&b) {a,~(a&b)}
+	circuit NAND b&~(a&b) {b,~(a&b)}
+	circuit NAND ~((a&~(a&b))&(b&~(a&b))) {a&~(a&b),b&~(a&b)}
+
+	outputs { ~((a&~(a&b))&(b&~(a&b))) }

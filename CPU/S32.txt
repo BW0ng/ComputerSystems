@@ -1,0 +1,39 @@
+# 32 bit selector - select one of two 32-bit input words (64 data inputs, 1 control line input, 32 outputs)
+
+	inputNames {a[31:0],b[31:0],c}
+	outputNames { s[31:0] }
+
+	circuit S1bit s0 {a0,b0,c}
+	circuit S1bit s1 {a1,b1,c}
+	circuit S1bit s2 {a2,b2,c}
+	circuit S1bit s3 {a3,b3,c}
+	circuit S1bit s4 {a4,b4,c}
+	circuit S1bit s5 {a5,b5,c}
+	circuit S1bit s6 {a6,b6,c}
+	circuit S1bit s7 {a7,b7,c}
+	circuit S1bit s8 {a8,b8,c}
+	circuit S1bit s9 {a9,b9,c}
+	circuit S1bit s10 {a10,b10,c}
+	circuit S1bit s11 {a11,b11,c}
+	circuit S1bit s12 {a12,b12,c}
+	circuit S1bit s13 {a13,b13,c}
+	circuit S1bit s14 {a14,b14,c}
+	circuit S1bit s15 {a15,b15,c}
+	circuit S1bit s16 {a16,b16,c}
+	circuit S1bit s17 {a17,b17,c}
+	circuit S1bit s18 {a18,b18,c}
+	circuit S1bit s19 {a19,b19,c}
+	circuit S1bit s20 {a20,b20,c}
+	circuit S1bit s21 {a21,b21,c}
+	circuit S1bit s22 {a22,b22,c}
+	circuit S1bit s23 {a23,b23,c}
+	circuit S1bit s24 {a24,b24,c}
+	circuit S1bit s25 {a25,b25,c}
+	circuit S1bit s26 {a26,b26,c}
+	circuit S1bit s27 {a27,b27,c}
+	circuit S1bit s28 {a28,b28,c}
+	circuit S1bit s29 {a29,b29,c}
+	circuit S1bit s30 {a30,b30,c}
+	circuit S1bit s31 {a31,b31,c}
+
+	outputs { s31,s30,s29,s28,s27,s26,s25,s24,s23,s22,s21,s20,s19,s18,s17,s16,s15,s14,s13,s12,s11,s10,s9,s8,s7,s6,s5,s4,s3,s2,s1,s0 }
