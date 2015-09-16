@@ -15,7 +15,7 @@ XOR.txt           //Xor Gate
 MUX2.txt         //select between 2 signals
 S32.txt          //Selector32 //use for OutputSelect Unit
 Selector1bit.txt //Selector1
-SCS.txt         //ShiftControlSelect unit
+SCS.txt          //ShiftControlSelect unit
 
 SR32.txt              //ShifterRight32bit
   RS1bit.txt         //RightShift 1 Bit
