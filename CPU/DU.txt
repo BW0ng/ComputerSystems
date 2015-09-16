@@ -1,0 +1,8 @@
+# Decoder Unit
+
+inputNames { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
+outputNames { f1,f0,inva,invb,cin,selectImm,signExtend,selectShamt,selectALU,selectMultiply }
+
+
+
+outputs { # }

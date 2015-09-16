@@ -1,0 +1,12 @@
+# ShiftControlSelect unit
+
+  inputNames { sh[4:0], t[4:0], selectShamt }
+  outputNames { shmt[4:0] }
+
+  circuit Selector1bit s0 { sh0,t0,selectShamt }
+  circuit Selector1bit s1 { sh1,t1,selectShamt }
+  circuit Selector1bit s2 { sh2,t2,selectShamt }
+  circuit Selector1bit s3 { sh3,t3,selectShamt }
+  circuit Selector1bit s4 { sh4,t4,selectShamt }
+
+  outputs { s[4:0].out }

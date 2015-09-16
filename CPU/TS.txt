@@ -1,0 +1,8 @@
+# T Selector
+
+  inputNames { t[31:0], im[15:0], selectImm, signExtended }
+  outputNames { out[31:0] }
+
+  circuits CIRCUIT name { # }
+
+  outputs {  }
