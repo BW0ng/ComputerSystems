@@ -1,8 +1,52 @@
 # Decoder Unit
 
 inputNames { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
-outputNames { f1,f0,inva,invb,cin,selectImm,signExtend,selectShamt,selectALU,selectMultiply }
+outputNames { f1,f0,inva,invb,cin,selectImm,signExtend,selectShamt,selectALU,selectMultiply,selectSLT,selectSRA }
 
+circuit ADDU addu { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
+circuit ADD add { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
+circuit ADDI addi { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
+circuit AND and { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
+circuit ANDI andi { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
+circuit OR or { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
+circuit ORI ori { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
+circuit SLT slt { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
+circuit SLTI slti { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
+circuit SRL srl { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
+circuit SRLV srlv { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
+circuit SRA sra { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
+circuit SUB sub { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
+circuit MULT mult { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
+circuit XOR xor { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
+circuit XORI xori { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
 
+#Curcuit ALU
+circuit ALU_Fselector alu { or,ori,xor,xori,and,andi } #f1 & f0
 
-outputs { # }
+#inva
+circuit ZERO z {sub}
+
+#T-select immdiate
+circuit OR tior1 { addi,andi }
+circuit OR tior2 { ori, slti }
+circuit OR tior3 { xori,tior1 }
+circuit OR tior4 {tior2,tior3 }
+
+#Sigh ectended?
+circuit OR signE { addi, slti }
+
+#shifter using sh
+circuit OR shift { srl,sra }
+
+#ALU
+circuit OR aluor1 { slt,slti }
+circuit OR aluor2 { srl,srlv }
+circuit OR aluor3 { aluor1,aluor2 }
+circuit OR aluor4 { sra, aluor3 }
+circuit OR aluselect { aluor4,mult }
+circuit NOT ~alu { aluselect }
+
+#SLT
+circuit OR slt_selector { slt,slti }
+
+outputs { alu.f1 , alu.f0 , z , sub , sub , tior4 , signE , shift , ~alu , mult , slt_selector , sra }

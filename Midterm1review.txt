@@ -1,0 +1,95 @@
+1 2 4 8 16 32 64 128 256 512 1024
+
+2^10 approx 1000
+2^20 approx Million
+2^30 approx Billion
+2^32 approx 4 Billion
+
+1101 0011 = D3
+  11 0111 =
+0011 0111 = 37base(16)
+
+convert Decimal to Binary
+35   = 35 1
+35/2 = 17 1
+17/2 = 8  0
+8/2  = 4  0
+4/2  = 2  0
+2/2  = 1  1
+1    = 1  1
+100011 = 35
+
+1. Signed Magnitude
+  1 0100010
+  0 0100010
+2. One's Complment
+  0010 0010 = 34
+  1101 1110 = -34
+  0000 0000 = 0
+  1111 1111 = x
+3. Twos complement
+  0010 0010 = 34
+  1101 1110 = -34
+  ---------
+ 10000 0000 =
+
+op, a,b,res
+
+circuit with 16 inputs { a[7:0],b[7:0] } and outputs { out[7:0],carry }
+circuit with 7 inputs { out[7:0],carry } out outputs { OR orx {outx,carry} }
+
+a,b,p
+for (int i=0;i<32;i++) {
+  if(a>>i & 1==1)
+    p+=b<<i;
+}
+
+MICROCODE
+
+divide 101100, 1001
+
+101100
+1001  subtract
+------
+001000
+
+
+----------
+=
+=======================
+=
+----------
+----------
+=
+=======================
+=
+----------
+----------
+=
+=======================
+=
+----------
+
+a,b, passed in: b/a
+q=0
+r=b
+bit=1
+while (a<r)
+{
+  a = a << 1;
+  bit = bit << 1;
+}
+while (bit>1)
+{
+  a = a >> 1;
+  bit = bit >> 1;
+  if(a<r)
+  {
+    r=r-a;
+    q=q+bit;
+  }
+}
+
+LOOK AT PICTURES!!!
+
+6.022x10^23 mull or something

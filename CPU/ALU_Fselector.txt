@@ -1,0 +1,14 @@
+#ALU_Fselector
+
+inputNames { or,ori,xor,xori,and,andi }
+outputNames { f1,f0 }
+
+circuit OR or1 { or,ori }
+circuit OR or2 { xor,xori }
+circuit OR orFinal { or1,or2}
+
+circuit OR and1 {and,andi}
+
+circuit OR andFinal { and1,or2 }
+
+outputs { orFinal,andFinal }

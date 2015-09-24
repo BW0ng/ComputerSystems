@@ -3,6 +3,239 @@
   inputNames { t[31:0], im[15:0], selectImm, signExtended }
   outputNames { out[31:0] }
 
-  circuits CIRCUIT name { # }
+  #Decide if selectImm
+  circuit NOT ~selectImm {selectImm}
+  #if SignExtendedOR~
+  circuit NOT ~signExtended {signExtended}
 
-  outputs {  }
+  circuit AND and31 {im15,signExtended}
+  circuit AND an~31 {0,~signExtended}
+  circuit OR or31 {and31,an~31}
+  circuit AND si31 {or31,selectImm}
+  circuit AND ~si31 {t31,~selectImm}
+  circuit OR final31 {si31,~si31}
+
+  circuit AND and30 {im15,signExtended}
+  circuit AND an~30 {0,~signExtended}
+  circuit OR or30 {and30,an~30}
+  circuit AND si30 {or30,selectImm}
+  circuit AND ~si30 {t30,~selectImm}
+  circuit OR final30 {si30,~si30}
+
+  circuit AND and29 {im15,signExtended}
+  circuit AND an~29 {0,~signExtended}
+  circuit OR or29 {and29,an~29}
+  circuit AND si29 {or29,selectImm}
+  circuit AND ~si29 {t29,~selectImm}
+  circuit OR final29 {si29,~si29}
+
+  circuit AND and28 {im15,signExtended}
+  circuit AND an~28 {0,~signExtended}
+  circuit OR or28 {and28,an~28}
+  circuit AND si28 {or28,selectImm}
+  circuit AND ~si28 {t28,~selectImm}
+  circuit OR final28 {si28,~si28}
+
+  circuit AND and27 {im15,signExtended}
+  circuit AND an~27 {0,~signExtended}
+  circuit OR or27 {and27,an~27}
+  circuit AND si27 {or27,selectImm}
+  circuit AND ~si27 {t27,~selectImm}
+  circuit OR final27 {si27,~si27}
+
+  circuit AND and26 {im15,signExtended}
+  circuit AND an~26 {0,~signExtended}
+  circuit OR or26 {and26,an~26}
+  circuit AND si26 {or26,selectImm}
+  circuit AND ~si26 {t26,~selectImm}
+  circuit OR final26 {si26,~si26}
+
+  circuit AND and25 {im15,signExtended}
+  circuit AND an~25 {0,~signExtended}
+  circuit OR or25 {and25,an~25}
+  circuit AND si25 {or25,selectImm}
+  circuit AND ~si25 {t25,~selectImm}
+  circuit OR final25 {si25,~si25}
+
+  circuit AND and24 {im15,signExtended}
+  circuit AND an~24 {0,~signExtended}
+  circuit OR or24 {and24,an~24}
+  circuit AND si24 {or24,selectImm}
+  circuit AND ~si24 {t24,~selectImm}
+  circuit OR final24 {si24,~si24}
+
+  circuit AND and23 {im15,signExtended}
+  circuit AND an~23 {0,~signExtended}
+  circuit OR or23 {and23,an~23}
+  circuit AND si23 {or23,selectImm}
+  circuit AND ~si23 {t23,~selectImm}
+  circuit OR final23 {si23,~si23}
+
+  circuit AND and22 {im15,signExtended}
+  circuit AND an~22 {0,~signExtended}
+  circuit OR or22 {and22,an~22}
+  circuit AND si22 {or22,selectImm}
+  circuit AND ~si22 {t22,~selectImm}
+  circuit OR final22 {si22,~si22}
+
+  circuit AND and21 {im15,signExtended}
+  circuit AND an~21 {0,~signExtended}
+  circuit OR or21 {and21,an~21}
+  circuit AND si21 {or21,selectImm}
+  circuit AND ~si21 {t21,~selectImm}
+  circuit OR final21 {si21,~si21}
+
+  circuit AND and20 {im15,signExtended}
+  circuit AND an~20 {0,~signExtended}
+  circuit OR or20 {and20,an~20}
+  circuit AND si20 {or20,selectImm}
+  circuit AND ~si20 {t20,~selectImm}
+  circuit OR final20 {si20,~si20}
+
+  circuit AND and19 {im15,signExtended}
+  circuit AND an~19 {0,~signExtended}
+  circuit OR or19 {and19,an~19}
+  circuit AND si19 {or19,selectImm}
+  circuit AND ~si19 {t19,~selectImm}
+  circuit OR final19 {si19,~si19}
+
+  circuit AND and18 {im15,signExtended}
+  circuit AND an~18 {0,~signExtended}
+  circuit OR or18 {and18,an~18}
+  circuit AND si18 {or18,selectImm}
+  circuit AND ~si18 {t18,~selectImm}
+  circuit OR final18 {si18,~si18}
+
+  circuit AND and17 {im15,signExtended}
+  circuit AND an~17 {0,~signExtended}
+  circuit OR or17 {and17,an~17}
+  circuit AND si17 {or17,selectImm}
+  circuit AND ~si17 {t17,~selectImm}
+  circuit OR final17 {si17,~si17}
+
+  circuit AND and16 {im15,signExtended}
+  circuit AND an~16 {0,~signExtended}
+  circuit OR or16 {and16,an~16}
+  circuit AND si16 {or16,selectImm}
+  circuit AND ~si16 {t16,~selectImm}
+  circuit OR final16 {si16,~si16}
+
+  circuit AND and15 {im15,signExtended}
+  circuit AND an~15 {0,~signExtended}
+  circuit OR or15 {and15,an~15}
+  circuit AND si15 {or15,selectImm}
+  circuit AND ~si15 {t15,~selectImm}
+  circuit OR final15 {si15,~si15}
+  #circuit AND and15 {t15,signExtended}
+  #circuit AND an~15 {im15,~signExtended}
+  #circuit OR or15 {and15,an~15}
+  #circuit AND si15 {or15,selectImm}
+  #circuit AND ~si15 {t15,~selectImm}
+  #circuit OR final15 {si15,~si15}
+
+  circuit AND and14 {t14,signExtended}
+  circuit AND an~14 {im14,~signExtended}
+  circuit OR or14 {and14,an~14}
+  circuit AND si14 {or14,selectImm}
+  circuit AND ~si14 {t14,~selectImm}
+  circuit OR final14 {si14,~si14}
+
+  circuit AND and13 {t13,signExtended}
+  circuit AND an~13 {im13,~signExtended}
+  circuit OR or13 {and13,an~13}
+  circuit AND si13 {or13,selectImm}
+  circuit AND ~si13 {t13,~selectImm}
+  circuit OR final13 {si13,~si13}
+
+  circuit AND and12 {t12,signExtended}
+  circuit AND an~12 {im12,~signExtended}
+  circuit OR or12 {and12,an~12}
+  circuit AND si12 {or12,selectImm}
+  circuit AND ~si12 {t12,~selectImm}
+  circuit OR final12 {si12,~si12}
+
+  circuit AND and11 {t11,signExtended}
+  circuit AND an~11 {im11,~signExtended}
+  circuit OR or11 {and11,an~11}
+  circuit AND si11 {or11,selectImm}
+  circuit AND ~si11 {t11,~selectImm}
+  circuit OR final11 {si11,~si11}
+
+  circuit AND and10 {t10,signExtended}
+  circuit AND an~10 {im10,~signExtended}
+  circuit OR or10 {and10,an~10}
+  circuit AND si10 {or10,selectImm}
+  circuit AND ~si10 {t10,~selectImm}
+  circuit OR final10 {si10,~si10}
+
+  circuit AND and9 {t9,signExtended}
+  circuit AND an~9 {im9,~signExtended}
+  circuit OR or9 {and9,an~9}
+  circuit AND si9 {or9,selectImm}
+  circuit AND ~si9 {t9,~selectImm}
+  circuit OR final9 {si9,~si9}
+
+  circuit AND and8 {t8,signExtended}
+  circuit AND an~8 {im8,~signExtended}
+  circuit OR or8 {and8,an~8}
+  circuit AND si8 {or8,selectImm}
+  circuit AND ~si8 {t8,~selectImm}
+  circuit OR final8 {si8,~si8}
+
+  circuit AND and7 {t7,signExtended}
+  circuit AND an~7 {im7,~signExtended}
+  circuit OR or7 {and7,an~7}
+  circuit AND si7 {or7,selectImm}
+  circuit AND ~si7 {t7,~selectImm}
+  circuit OR final7 {si7,~si7}
+
+  circuit AND and6 {t6,signExtended}
+  circuit AND an~6 {im6,~signExtended}
+  circuit OR or6 {and6,an~6}
+  circuit AND si6 {or6,selectImm}
+  circuit AND ~si6 {t6,~selectImm}
+  circuit OR final6 {si6,~si6}
+
+  circuit AND and5 {t5,signExtended}
+  circuit AND an~5 {im5,~signExtended}
+  circuit OR or5 {and5,an~5}
+  circuit AND si5 {or5,selectImm}
+  circuit AND ~si5 {t5,~selectImm}
+  circuit OR final5 {si5,~si5}
+
+  circuit AND and4 {t4,signExtended}
+  circuit AND an~4 {im4,~signExtended}
+  circuit OR or4 {and4,an~4}
+  circuit AND si4 {or4,selectImm}
+  circuit AND ~si4 {t4,~selectImm}
+  circuit OR final4 {si4,~si4}
+
+  circuit AND and3 {t3,signExtended}
+  circuit AND an~3 {im3,~signExtended}
+  circuit OR or3 {and3,an~3}
+  circuit AND si3 {or3,selectImm}
+  circuit AND ~si3 {t3,~selectImm}
+  circuit OR final3 {si3,~si3}
+
+  circuit AND and2 {t2,signExtended}
+  circuit AND an~2 {im2,~signExtended}
+  circuit OR or2 {and2,an~2}
+  circuit AND si2 {or2,selectImm}
+  circuit AND ~si2 {t2,~selectImm}
+  circuit OR final2 {si2,~si2}
+
+  circuit AND and1 {t1,signExtended}
+  circuit AND an~1 {im1,~signExtended}
+  circuit OR or1 {and1,an~1}
+  circuit AND si1 {or1,selectImm}
+  circuit AND ~si1 {t1,~selectImm}
+  circuit OR final1 {si1,~si1}
+
+  circuit AND and0 {t0,signExtended}
+  circuit AND an~0 {im0,~signExtended}
+  circuit OR or0 {and0,an~0}
+  circuit AND si0 {or0,selectImm}
+  circuit AND ~si0 {t0,~selectImm}
+  circuit OR final0 {si0,~si0}
+
+  outputs { final[31:0] }

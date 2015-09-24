@@ -1,0 +1,52 @@
+inputNames { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
+outputNames { out }
+
+circuit NOT ~op5 {op5}
+circuit NOT ~op4 {op4}
+circuit NOT ~op3 {op3}
+circuit NOT ~op2 {op2}
+circuit NOT ~op1 {op1}
+circuit NOT ~op0 {op0}
+circuit NOT ~rd4 {sh4}
+circuit NOT ~rd3 {sh3}
+circuit NOT ~rd2 {sh2}
+circuit NOT ~rd1 {sh1}
+circuit NOT ~rd0 {sh0}
+circuit NOT ~sh4 {sh4}
+circuit NOT ~sh3 {sh3}
+circuit NOT ~sh2 {sh2}
+circuit NOT ~sh1 {sh1}
+circuit NOT ~sh0 {sh0}
+circuit NOT ~f5 {f5}
+circuit NOT ~f4 {f4}
+circuit NOT ~f3 {f3}
+circuit NOT ~f2 {f2}
+circuit NOT ~f1 {f1}
+circuit NOT ~f0 {f0}
+
+circuit AND and1 { ~op5,~op4 }
+circuit AND and2 { ~op3,~op2 }
+circuit AND and3 { ~op2,~op0 }
+circuit AND and4 { ~rd4,~rd3 }
+circuit AND and5 { ~rd2,~rd1 }
+circuit AND and400 { ~sh4,~sh3 }
+circuit AND and500 { ~sh2,~sh1 }
+circuit AND and6 { ~sh0,~f5 }
+circuit AND and7 { f4,f3 }
+circuit AND and8 { ~f2,~f1 }
+circuit AND and9 {rd0,~f0}
+
+circuit AND and10 {and2,and3}
+circuit AND and11 {and4,and5}
+circuit AND and12 {and6,and7}
+circuit AND and13 {and8,and9}
+circuit AND and50 {and1,and10}
+circuit AND and51 {and400,and500}
+circuit AND and52 {and50,and51}
+
+circuit AND and14 {and52,and11}
+circuit AND and15 {and12,and13}
+
+circuit AND and16 {and14,and15}
+
+outputs {and16}

@@ -1,0 +1,11 @@
+#zer0
+
+inputNames { a }
+outputNames {out}
+
+  truthTable {
+  0, 0
+  1, 0
+}
+
+propagationDelay { 1 }

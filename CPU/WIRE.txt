@@ -1,0 +1,14 @@
+# WIRE: A gate that passes through a signal.
+# Allows renaming.
+# by: David Cline
+
+inputNames { a }
+outputNames { b }
+
+truthTable :
+{
+0, 0
+1, 1
+}
+
+propagationDelay { 0 }
