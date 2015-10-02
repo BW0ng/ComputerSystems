@@ -21,7 +21,7 @@ circuit NOT ~f0 {f0}
 
 circuit AND and1 { ~op5,~op4 }
 circuit AND and2 { ~op3,~op2 }
-circuit AND and3 { ~op2,~op0 }
+circuit AND and3 { ~op1,~op0 }
 circuit AND and4 { ~sh4,~sh3 }
 circuit AND and5 { ~sh2,~sh1 }
 circuit AND and6 { ~sh0,f5 }

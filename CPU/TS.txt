@@ -120,121 +120,67 @@
   circuit AND ~si16 {t16,~selectImm}
   circuit OR final16 {si16,~si16}
 
-  circuit AND and15 {im15,signExtended}
-  circuit AND an~15 {0,~signExtended}
-  circuit OR or15 {and15,an~15}
-  circuit AND si15 {or15,selectImm}
+  circuit AND si15 {im15,selectImm}
   circuit AND ~si15 {t15,~selectImm}
   circuit OR final15 {si15,~si15}
-  #circuit AND and15 {t15,signExtended}
-  #circuit AND an~15 {im15,~signExtended}
-  #circuit OR or15 {and15,an~15}
-  #circuit AND si15 {or15,selectImm}
-  #circuit AND ~si15 {t15,~selectImm}
-  #circuit OR final15 {si15,~si15}
 
-  circuit AND and14 {t14,signExtended}
-  circuit AND an~14 {im14,~signExtended}
-  circuit OR or14 {and14,an~14}
-  circuit AND si14 {or14,selectImm}
+  circuit AND si14 {im14,selectImm}
   circuit AND ~si14 {t14,~selectImm}
   circuit OR final14 {si14,~si14}
 
-  circuit AND and13 {t13,signExtended}
-  circuit AND an~13 {im13,~signExtended}
-  circuit OR or13 {and13,an~13}
-  circuit AND si13 {or13,selectImm}
+  circuit AND si13 {im13,selectImm}
   circuit AND ~si13 {t13,~selectImm}
   circuit OR final13 {si13,~si13}
 
-  circuit AND and12 {t12,signExtended}
-  circuit AND an~12 {im12,~signExtended}
-  circuit OR or12 {and12,an~12}
-  circuit AND si12 {or12,selectImm}
+  circuit AND si12 {im12,selectImm}
   circuit AND ~si12 {t12,~selectImm}
   circuit OR final12 {si12,~si12}
 
-  circuit AND and11 {t11,signExtended}
-  circuit AND an~11 {im11,~signExtended}
-  circuit OR or11 {and11,an~11}
-  circuit AND si11 {or11,selectImm}
+  circuit AND si11 {im11,selectImm}
   circuit AND ~si11 {t11,~selectImm}
   circuit OR final11 {si11,~si11}
 
-  circuit AND and10 {t10,signExtended}
-  circuit AND an~10 {im10,~signExtended}
-  circuit OR or10 {and10,an~10}
-  circuit AND si10 {or10,selectImm}
+  circuit AND si10 {im10,selectImm}
   circuit AND ~si10 {t10,~selectImm}
   circuit OR final10 {si10,~si10}
 
-  circuit AND and9 {t9,signExtended}
-  circuit AND an~9 {im9,~signExtended}
-  circuit OR or9 {and9,an~9}
-  circuit AND si9 {or9,selectImm}
+  circuit AND si9 {im9,selectImm}
   circuit AND ~si9 {t9,~selectImm}
   circuit OR final9 {si9,~si9}
 
-  circuit AND and8 {t8,signExtended}
-  circuit AND an~8 {im8,~signExtended}
-  circuit OR or8 {and8,an~8}
-  circuit AND si8 {or8,selectImm}
+  circuit AND si8 {im8,selectImm}
   circuit AND ~si8 {t8,~selectImm}
   circuit OR final8 {si8,~si8}
 
-  circuit AND and7 {t7,signExtended}
-  circuit AND an~7 {im7,~signExtended}
-  circuit OR or7 {and7,an~7}
-  circuit AND si7 {or7,selectImm}
+  circuit AND si7 {im7,selectImm}
   circuit AND ~si7 {t7,~selectImm}
   circuit OR final7 {si7,~si7}
 
-  circuit AND and6 {t6,signExtended}
-  circuit AND an~6 {im6,~signExtended}
-  circuit OR or6 {and6,an~6}
-  circuit AND si6 {or6,selectImm}
+  circuit AND si6 {im6,selectImm}
   circuit AND ~si6 {t6,~selectImm}
   circuit OR final6 {si6,~si6}
 
-  circuit AND and5 {t5,signExtended}
-  circuit AND an~5 {im5,~signExtended}
-  circuit OR or5 {and5,an~5}
-  circuit AND si5 {or5,selectImm}
+  circuit AND si5 {im5,selectImm}
   circuit AND ~si5 {t5,~selectImm}
   circuit OR final5 {si5,~si5}
 
-  circuit AND and4 {t4,signExtended}
-  circuit AND an~4 {im4,~signExtended}
-  circuit OR or4 {and4,an~4}
-  circuit AND si4 {or4,selectImm}
+  circuit AND si4 {im4,selectImm}
   circuit AND ~si4 {t4,~selectImm}
   circuit OR final4 {si4,~si4}
 
-  circuit AND and3 {t3,signExtended}
-  circuit AND an~3 {im3,~signExtended}
-  circuit OR or3 {and3,an~3}
-  circuit AND si3 {or3,selectImm}
+  circuit AND si3 {im3,selectImm}
   circuit AND ~si3 {t3,~selectImm}
   circuit OR final3 {si3,~si3}
 
-  circuit AND and2 {t2,signExtended}
-  circuit AND an~2 {im2,~signExtended}
-  circuit OR or2 {and2,an~2}
-  circuit AND si2 {or2,selectImm}
+  circuit AND si2 {im2,selectImm}
   circuit AND ~si2 {t2,~selectImm}
   circuit OR final2 {si2,~si2}
 
-  circuit AND and1 {t1,signExtended}
-  circuit AND an~1 {im1,~signExtended}
-  circuit OR or1 {and1,an~1}
-  circuit AND si1 {or1,selectImm}
+  circuit AND si1 {im1,selectImm}
   circuit AND ~si1 {t1,~selectImm}
   circuit OR final1 {si1,~si1}
 
-  circuit AND and0 {t0,signExtended}
-  circuit AND an~0 {im0,~signExtended}
-  circuit OR or0 {and0,an~0}
-  circuit AND si0 {or0,selectImm}
+  circuit AND si0 {im0,selectImm}
   circuit AND ~si0 {t0,~selectImm}
   circuit OR final0 {si0,~si0}
 

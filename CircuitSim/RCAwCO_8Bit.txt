@@ -5,7 +5,7 @@
 	#explain 0 = Cin
 	inputNames {a7,a6,a5,a4,a3,a2,a1,a0,b7,b6,b5,b4,b3,b2,b1,b0,c}
 	outputNames {s7,s6,s5,s4,s3,s2,s1,s0,carry}
-	
+
 	circuit FULLADDER fa0 {a0,b0,c}
 	circuit FULLADDER fa1 {a1,b1,fa0.carry}
 	circuit FULLADDER fa2 {a2,b2,fa1.carry}
@@ -14,8 +14,5 @@
 	circuit FULLADDER fa5 {a5,b5,fa4.carry}
 	circuit FULLADDER fa6 {a6,b6,fa5.carry}
 	circuit FULLADDER fa7 {a7,b7,fa6.carry}
-	
+
 	outputs {fa7.sum,fa6.sum,fa5.sum,fa4.sum,fa3.sum,fa2.sum,fa1.sum,fa0.sum,fa7.carry}
-	
-	
-	

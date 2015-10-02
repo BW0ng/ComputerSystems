@@ -42,7 +42,7 @@
   circuit AND an~20 {s20,~shmt}
 
   circuit AND and19 {s20,shmt}
-  circuit AND an~19 {s19,shmt}
+  circuit AND an~19 {s19,~shmt}
 
   circuit AND and18 {s19,shmt}
   circuit AND an~18 {s18,~shmt}

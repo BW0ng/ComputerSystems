@@ -24,9 +24,10 @@ circuit NOT ~f2 {f2}
 circuit NOT ~f1 {f1}
 circuit NOT ~f0 {f0}
 
+#0000 00ss ssst tttt 0000 0000 0001 1000
 circuit AND and1 { ~op5,~op4 }
 circuit AND and2 { ~op3,~op2 }
-circuit AND and3 { ~op2,~op0 }
+circuit AND and3 { ~op1,~op0 }
 circuit AND and4 { ~rd4,~rd3 }
 circuit AND and5 { ~rd2,~rd1 }
 circuit AND and400 { ~sh4,~sh3 }
@@ -34,7 +35,7 @@ circuit AND and500 { ~sh2,~sh1 }
 circuit AND and6 { ~sh0,~f5 }
 circuit AND and7 { f4,f3 }
 circuit AND and8 { ~f2,~f1 }
-circuit AND and9 {rd0,~f0}
+circuit AND and9 {~rd0,~f0}
 
 circuit AND and10 {and2,and3}
 circuit AND and11 {and4,and5}

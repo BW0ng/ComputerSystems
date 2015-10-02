@@ -1,12 +1,670 @@
 #ShiftLeft32 unit
 
-  inputNames { s[31:0], shmt[4:0] }
+  inputNames { s[31:0], shmt[4:0] , signExtend }
   outputNames { out[31:0] }
 
-  circuit RS1bit rs1 { s[31:0], shmt0 }
-  circuit RS2Bit rs2 { rs1.out[31:0],shmt1 }
-  circuit RS4bit rs4 { rs2.out[31:0],shmt2 }
-  circuit RS8bit rs8 { rs4.out[31:0],shmt3 }
-  circuit RS16bit rs16 { rs8.out[31:0],shmt4 }
+  circuit AND extend { signExtend, s31 }
+  circuit NOT ~shmt0 {shmt0}
+  circuit NOT ~shmt1 {shmt1}
+  circuit NOT ~shmt2 {shmt2}
+  circuit NOT ~shmt3 {shmt3}
+  circuit NOT ~shmt4 {shmt4}
 
-  outputs { rs16.out[31:0] }
+
+  circuit AND s31shmt0 { extend, shmt0 }
+	circuit AND s31~shmt0 { s31, ~shmt0 }
+	circuit OR 1bit31 { s31shmt0, s31~shmt0 }
+
+	circuit AND s30shmt0 { s31, shmt0 }
+	circuit AND s30~shmt0 { s30, ~shmt0 }
+	circuit OR 1bit30 { s30shmt0, s30~shmt0 }
+
+	circuit AND s29shmt0 { s30, shmt0 }
+	circuit AND s29~shmt0 { s29, ~shmt0 }
+	circuit OR 1bit29 { s29shmt0, s29~shmt0 }
+
+	circuit AND s28shmt0 { s29, shmt0 }
+	circuit AND s28~shmt0 { s28, ~shmt0 }
+	circuit OR 1bit28 { s28shmt0, s28~shmt0 }
+
+	circuit AND s27shmt0 { s28, shmt0 }
+	circuit AND s27~shmt0 { s27, ~shmt0 }
+	circuit OR 1bit27 { s27shmt0, s27~shmt0 }
+
+	circuit AND s26shmt0 { s27, shmt0 }
+	circuit AND s26~shmt0 { s26, ~shmt0 }
+	circuit OR 1bit26 { s26shmt0, s26~shmt0 }
+
+	circuit AND s25shmt0 { s26, shmt0 }
+	circuit AND s25~shmt0 { s25, ~shmt0 }
+	circuit OR 1bit25 { s25shmt0, s25~shmt0 }
+
+	circuit AND s24shmt0 { s25, shmt0 }
+	circuit AND s24~shmt0 { s24, ~shmt0 }
+	circuit OR 1bit24 { s24shmt0, s24~shmt0 }
+
+	circuit AND s23shmt0 { s24, shmt0 }
+	circuit AND s23~shmt0 { s23, ~shmt0 }
+	circuit OR 1bit23 { s23shmt0, s23~shmt0 }
+
+	circuit AND s22shmt0 { s23, shmt0 }
+	circuit AND s22~shmt0 { s22, ~shmt0 }
+	circuit OR 1bit22 { s22shmt0, s22~shmt0 }
+
+	circuit AND s21shmt0 { s22, shmt0 }
+	circuit AND s21~shmt0 { s21, ~shmt0 }
+	circuit OR 1bit21 { s21shmt0, s21~shmt0 }
+
+	circuit AND s20shmt0 { s21, shmt0 }
+	circuit AND s20~shmt0 { s20, ~shmt0 }
+	circuit OR 1bit20 { s20shmt0, s20~shmt0 }
+
+	circuit AND s19shmt0 { s20, shmt0 }
+	circuit AND s19~shmt0 { s19, ~shmt0 }
+	circuit OR 1bit19 { s19shmt0, s19~shmt0 }
+
+	circuit AND s18shmt0 { s19, shmt0 }
+	circuit AND s18~shmt0 { s18, ~shmt0 }
+	circuit OR 1bit18 { s18shmt0, s18~shmt0 }
+
+	circuit AND s17shmt0 { s18, shmt0 }
+	circuit AND s17~shmt0 { s17, ~shmt0 }
+	circuit OR 1bit17 { s17shmt0, s17~shmt0 }
+
+	circuit AND s16shmt0 { s17, shmt0 }
+	circuit AND s16~shmt0 { s16, ~shmt0 }
+	circuit OR 1bit16 { s16shmt0, s16~shmt0 }
+
+	circuit AND s15shmt0 { s16, shmt0 }
+	circuit AND s15~shmt0 { s15, ~shmt0 }
+	circuit OR 1bit15 { s15shmt0, s15~shmt0 }
+
+	circuit AND s14shmt0 { s15, shmt0 }
+	circuit AND s14~shmt0 { s14, ~shmt0 }
+	circuit OR 1bit14 { s14shmt0, s14~shmt0 }
+
+	circuit AND s13shmt0 { s14, shmt0 }
+	circuit AND s13~shmt0 { s13, ~shmt0 }
+	circuit OR 1bit13 { s13shmt0, s13~shmt0 }
+
+	circuit AND s12shmt0 { s13, shmt0 }
+	circuit AND s12~shmt0 { s12, ~shmt0 }
+	circuit OR 1bit12 { s12shmt0, s12~shmt0 }
+
+	circuit AND s11shmt0 { s12, shmt0 }
+	circuit AND s11~shmt0 { s11, ~shmt0 }
+	circuit OR 1bit11 { s11shmt0, s11~shmt0 }
+
+	circuit AND s10shmt0 { s11, shmt0 }
+	circuit AND s10~shmt0 { s10, ~shmt0 }
+	circuit OR 1bit10 { s10shmt0, s10~shmt0 }
+
+	circuit AND s9shmt0 { s10, shmt0 }
+	circuit AND s9~shmt0 { s9, ~shmt0 }
+	circuit OR 1bit9 { s9shmt0, s9~shmt0 }
+
+	circuit AND s8shmt0 { s9, shmt0 }
+	circuit AND s8~shmt0 { s8, ~shmt0 }
+	circuit OR 1bit8 { s8shmt0, s8~shmt0 }
+
+	circuit AND s7shmt0 { s8, shmt0 }
+	circuit AND s7~shmt0 { s7, ~shmt0 }
+	circuit OR 1bit7 { s7shmt0, s7~shmt0 }
+
+	circuit AND s6shmt0 { s7, shmt0 }
+	circuit AND s6~shmt0 { s6, ~shmt0 }
+	circuit OR 1bit6 { s6shmt0, s6~shmt0 }
+
+	circuit AND s5shmt0 { s6, shmt0 }
+	circuit AND s5~shmt0 { s5, ~shmt0 }
+	circuit OR 1bit5 { s5shmt0, s5~shmt0 }
+
+	circuit AND s4shmt0 { s5, shmt0 }
+	circuit AND s4~shmt0 { s4, ~shmt0 }
+	circuit OR 1bit4 { s4shmt0, s4~shmt0 }
+
+	circuit AND s3shmt0 { s4, shmt0 }
+	circuit AND s3~shmt0 { s3, ~shmt0 }
+	circuit OR 1bit3 { s3shmt0, s3~shmt0 }
+
+	circuit AND s2shmt0 { s3, shmt0 }
+	circuit AND s2~shmt0 { s2, ~shmt0 }
+	circuit OR 1bit2 { s2shmt0, s2~shmt0 }
+
+	circuit AND s1shmt0 { s2, shmt0 }
+	circuit AND s1~shmt0 { s1, ~shmt0 }
+	circuit OR 1bit1 { s1shmt0, s1~shmt0 }
+
+	circuit AND s0shmt0 { s1, shmt0 }
+	circuit AND s0~shmt0 { s0, ~shmt0 }
+	circuit OR 1bit0 { s0shmt0, s30~shmt0 }
+
+  ######
+  #2bit
+  ######
+
+  circuit AND s31shmt1 { extend, shmt1 }
+	circuit AND s31~shmt1 { 1bit31, ~shmt1 }
+	circuit OR 2bit31 { s31shmt1, s31~shmt1 }
+
+	circuit AND s30shmt1 { extend, shmt1 }
+	circuit AND s30~shmt1 { 1bit30, ~shmt1 }
+	circuit OR 2bit30 { s30shmt1, s30~shmt1 }
+
+	circuit AND s29shmt1 { 1bit31, shmt1 }
+	circuit AND s29~shmt1 { 1bit29, ~shmt1 }
+	circuit OR 2bit29 { s29shmt1, s29~shmt1 }
+
+	circuit AND s28shmt1 { 1bit30, shmt1 }
+	circuit AND s28~shmt1 { 1bit28, ~shmt1 }
+	circuit OR 2bit28 { s28shmt1, s28~shmt1 }
+
+	circuit AND s27shmt1 { 1bit29, shmt1 }
+	circuit AND s27~shmt1 { 1bit27, ~shmt1 }
+	circuit OR 2bit27 { s27shmt1, s27~shmt1 }
+
+	circuit AND s26shmt1 { 1bit28, shmt1 }
+	circuit AND s26~shmt1 { 1bit26, ~shmt1 }
+	circuit OR 2bit26 { s26shmt1, s26~shmt1 }
+
+	circuit AND s25shmt1 { 1bit27, shmt1 }
+	circuit AND s25~shmt1 { 1bit25, ~shmt1 }
+	circuit OR 2bit25 { s25shmt1, s25~shmt1 }
+
+	circuit AND s24shmt1 { 1bit26, shmt1 }
+	circuit AND s24~shmt1 { 1bit24, ~shmt1 }
+	circuit OR 2bit24 { s24shmt1, s24~shmt1 }
+
+	circuit AND s23shmt1 { 1bit25, shmt1 }
+	circuit AND s23~shmt1 { 1bit23, ~shmt1 }
+	circuit OR 2bit23 { s23shmt1, s23~shmt1 }
+
+	circuit AND s22shmt1 { 1bit24, shmt1 }
+	circuit AND s22~shmt1 { 1bit22, ~shmt1 }
+	circuit OR 2bit22 { s22shmt1, s22~shmt1 }
+
+	circuit AND s21shmt1 { 1bit23, shmt1 }
+	circuit AND s21~shmt1 { 1bit21, ~shmt1 }
+	circuit OR 2bit21 { s21shmt1, s21~shmt1 }
+
+	circuit AND s20shmt1 { 1bit22, shmt1 }
+	circuit AND s20~shmt1 { 1bit20, ~shmt1 }
+	circuit OR 2bit20 { s20shmt1, s20~shmt1 }
+
+	circuit AND s19shmt1 { 1bit21, shmt1 }
+	circuit AND s19~shmt1 { 1bit19, ~shmt1 }
+	circuit OR 2bit19 { s19shmt1, s19~shmt1 }
+
+	circuit AND s18shmt1 { 1bit20, shmt1 }
+	circuit AND s18~shmt1 { 1bit18, ~shmt1 }
+	circuit OR 2bit18 { s18shmt1, s18~shmt1 }
+
+	circuit AND s17shmt1 { 1bit19, shmt1 }
+	circuit AND s17~shmt1 { 1bit17, ~shmt1 }
+	circuit OR 2bit17 { s17shmt1, s17~shmt1 }
+
+	circuit AND s16shmt1 { 1bit18, shmt1 }
+	circuit AND s16~shmt1 { 1bit16, ~shmt1 }
+	circuit OR 2bit16 { s16shmt1, s16~shmt1 }
+
+	circuit AND s15shmt1 { 1bit17, shmt1 }
+	circuit AND s15~shmt1 { 1bit15, ~shmt1 }
+	circuit OR 2bit15 { s15shmt1, s15~shmt1 }
+
+	circuit AND s14shmt1 { 1bit16, shmt1 }
+	circuit AND s14~shmt1 { 1bit14, ~shmt1 }
+	circuit OR 2bit14 { s14shmt1, s14~shmt1 }
+
+	circuit AND s13shmt1 { 1bit15, shmt1 }
+	circuit AND s13~shmt1 { 1bit13, ~shmt1 }
+	circuit OR 2bit13 { s13shmt1, s13~shmt1 }
+
+	circuit AND s12shmt1 { 1bit14, shmt1 }
+	circuit AND s12~shmt1 { 1bit12, ~shmt1 }
+	circuit OR 2bit12 { s12shmt1, s12~shmt1 }
+
+	circuit AND s11shmt1 { 1bit13, shmt1 }
+	circuit AND s11~shmt1 { 1bit11, ~shmt1 }
+	circuit OR 2bit11 { s11shmt1, s11~shmt1 }
+
+	circuit AND s10shmt1 { 1bit12, shmt1 }
+	circuit AND s10~shmt1 { 1bit10, ~shmt1 }
+	circuit OR 2bit10 { s10shmt1, s10~shmt1 }
+
+	circuit AND s9shmt1 { 1bit11, shmt1 }
+	circuit AND s9~shmt1 { 1bit9, ~shmt1 }
+	circuit OR 2bit9 { s9shmt1, s9~shmt1 }
+
+	circuit AND s8shmt1 { 1bit10, shmt1 }
+	circuit AND s8~shmt1 { 1bit8, ~shmt1 }
+	circuit OR 2bit8 { s8shmt1, s8~shmt1 }
+
+	circuit AND s7shmt1 { 1bit9, shmt1 }
+	circuit AND s7~shmt1 { 1bit7, ~shmt1 }
+	circuit OR 2bit7 { s7shmt1, s7~shmt1 }
+
+	circuit AND s6shmt1 { 1bit8, shmt1 }
+	circuit AND s6~shmt1 { 1bit6, ~shmt1 }
+	circuit OR 2bit6 { s6shmt1, s6~shmt1 }
+
+	circuit AND s5shmt1 { 1bit7, shmt1 }
+	circuit AND s5~shmt1 { 1bit5, ~shmt1 }
+	circuit OR 2bit5 { s5shmt1, s5~shmt1 }
+
+	circuit AND s4shmt1 { 1bit6, shmt1 }
+	circuit AND s4~shmt1 { 1bit4, ~shmt1 }
+	circuit OR 2bit4 { s4shmt1, s4~shmt1 }
+
+	circuit AND s3shmt1 { 1bit5, shmt1 }
+	circuit AND s3~shmt1 { 1bit3, ~shmt1 }
+	circuit OR 2bit3 { s3shmt1, s3~shmt1 }
+
+	circuit AND s2shmt1 { 1bit4, shmt1 }
+	circuit AND s2~shmt1 { 1bit2, ~shmt1 }
+	circuit OR 2bit2 { s2shmt1, s2~shmt1 }
+
+	circuit AND s1shmt1 { 1bit3, shmt1 }
+	circuit AND s1~shmt1 { 1bit1, ~shmt1 }
+	circuit OR 2bit1 { s1shmt1, s1~shmt1 }
+
+	circuit AND s0shmt1 { 1bit2, shmt1 }
+	circuit AND s0~shmt1 { 1bit0, ~shmt1 }
+	circuit OR 2bit0 { s0shmt1, s0~shmt1 }
+
+  ######
+  #4bit
+  ######
+
+	circuit AND s31shmt2 { extend, shmt2 }
+	circuit AND s31~shmt2 { 2bit31, ~shmt2 }
+	circuit OR 4bit31 { s31shmt2, s31~shmt2 }
+
+	circuit AND s30shmt2 { extend, shmt2 }
+	circuit AND s30~shmt2 { 2bit30, ~shmt2 }
+	circuit OR 4bit30 { s30shmt2, s30~shmt2 }
+
+	circuit AND s29shmt2 { extend, shmt2 }
+	circuit AND s29~shmt2 { 2bit29, ~shmt2 }
+	circuit OR 4bit29 { s29shmt2, s29~shmt2 }
+
+	circuit AND s28shmt2 { extend, shmt2 }
+	circuit AND s28~shmt2 { 2bit28, ~shmt2 }
+	circuit OR 4bit28 { s28shmt2, s28~shmt2 }
+
+	circuit AND s27shmt2 { 2bit31, shmt2 }
+	circuit AND s27~shmt2 { 2bit27, ~shmt2 }
+	circuit OR 4bit27 { s27shmt2, s27~shmt2 }
+
+	circuit AND s26shmt2 { 2bit30, shmt2 }
+	circuit AND s26~shmt2 { 2bit26, ~shmt2 }
+	circuit OR 4bit26 { s26shmt2, s26~shmt2 }
+
+	circuit AND s25shmt2 { 2bit29, shmt2 }
+	circuit AND s25~shmt2 { 2bit25, ~shmt2 }
+	circuit OR 4bit25 { s25shmt2, s25~shmt2 }
+
+	circuit AND s24shmt2 { 2bit28, shmt2 }
+	circuit AND s24~shmt2 { 2bit24, ~shmt2 }
+	circuit OR 4bit24 { s24shmt2, s24~shmt2 }
+
+	circuit AND s23shmt2 { 2bit27, shmt2 }
+	circuit AND s23~shmt2 { 2bit23, ~shmt2 }
+	circuit OR 4bit23 { s23shmt2, s23~shmt2 }
+
+	circuit AND s22shmt2 { 2bit26, shmt2 }
+	circuit AND s22~shmt2 { 2bit22, ~shmt2 }
+	circuit OR 4bit22 { s22shmt2, s22~shmt2 }
+
+	circuit AND s21shmt2 { 2bit25, shmt2 }
+	circuit AND s21~shmt2 { 2bit21, ~shmt2 }
+	circuit OR 4bit21 { s21shmt2, s21~shmt2 }
+
+	circuit AND s20shmt2 { 2bit24, shmt2 }
+	circuit AND s20~shmt2 { 2bit20, ~shmt2 }
+	circuit OR 4bit20 { s20shmt2, s20~shmt2 }
+
+	circuit AND s19shmt2 { 2bit23, shmt2 }
+	circuit AND s19~shmt2 { 2bit19, ~shmt2 }
+	circuit OR 4bit19 { s19shmt2, s19~shmt2 }
+
+	circuit AND s18shmt2 { 2bit22, shmt2 }
+	circuit AND s18~shmt2 { 2bit18, ~shmt2 }
+	circuit OR 4bit18 { s18shmt2, s18~shmt2 }
+
+	circuit AND s17shmt2 { 2bit21, shmt2 }
+	circuit AND s17~shmt2 { 2bit17, ~shmt2 }3
+	circuit OR 4bit17 { s17shmt2, s17~shmt2 }
+
+	circuit AND s16shmt2 { 2bit20, shmt2 }
+	circuit AND s16~shmt2 { 2bit16, ~shmt2 }
+	circuit OR 4bit16 { s16shmt2, s16~shmt2 }
+
+	circuit AND s15shmt2 { 2bit19, shmt2 }
+	circuit AND s15~shmt2 { 2bit15, ~shmt2 }
+	circuit OR 4bit15 { s15shmt2, s15~shmt2 }
+
+	circuit AND s14shmt2 { 2bit18, shmt2 }
+	circuit AND s14~shmt2 { 2bit14, ~shmt2 }
+	circuit OR 4bit14 { s14shmt2, s14~shmt2 }
+
+	circuit AND s13shmt2 { 2bit17, shmt2 }
+	circuit AND s13~shmt2 { 2bit13, ~shmt2 }
+	circuit OR 4bit13 { s13shmt2, s13~shmt2 }
+
+	circuit AND s12shmt2 { 2bit16, shmt2 }
+	circuit AND s12~shmt2 { 2bit12, ~shmt2 }
+	circuit OR 4bit12 { s12shmt2, s12~shmt2 }
+
+	circuit AND s11shmt2 { 2bit15, shmt2 }
+	circuit AND s11~shmt2 { 2bit11, ~shmt2 }
+	circuit OR 4bit11 { s11shmt2, s11~shmt2 }
+
+	circuit AND s10shmt2 { 2bit14, shmt2 }
+	circuit AND s10~shmt2 { 2bit10, ~shmt2 }
+	circuit OR 4bit10 { s10shmt2, s10~shmt2 }
+
+	circuit AND s9shmt2 { 2bit13, shmt2 }
+	circuit AND s9~shmt2 { 2bit9, ~shmt2 }
+	circuit OR 4bit9 { s9shmt2, s9~shmt2 }
+
+	circuit AND s8shmt2 { 2bit12, shmt2 }
+	circuit AND s8~shmt2 { 2bit8, ~shmt2 }
+	circuit OR 4bit8 { s8shmt2, s8~shmt2 }
+
+	circuit AND s7shmt2 { 2bit11, shmt2 }
+	circuit AND s7~shmt2 { 2bit7, ~shmt2 }
+	circuit OR 4bit7 { s7shmt2, s7~shmt2 }
+
+	circuit AND s6shmt2 { 2bit10, shmt2 }
+	circuit AND s6~shmt2 { 2bit6, ~shmt2 }
+	circuit OR 4bit6 { s6shmt2, s6~shmt2 }
+
+	circuit AND s5shmt2 { 2bit9, shmt2 }
+	circuit AND s5~shmt2 { 2bit5, ~shmt2 }
+	circuit OR 4bit5 { s5shmt2, s5~shmt2 }
+
+	circuit AND s4shmt2 { 2bit8, shmt2 }
+	circuit AND s4~shmt2 { 2bit4, ~shmt2 }
+	circuit OR 4bit4 { s4shmt2, s4~shmt2 }
+
+	circuit AND s3shmt2 { 2bit7, shmt2 }
+	circuit AND s3~shmt2 { 2bit3, ~shmt2 }
+	circuit OR 4bit3 { s3shmt2, s3~shmt2 }
+
+	circuit AND s2shmt2 { 2bit6, shmt2 }
+	circuit AND s2~shmt2 { 2bit2, ~shmt2 }
+	circuit OR 4bit2 { s2shmt2, s2~shmt2 }
+
+	circuit AND s1shmt2 { 2bit5, shmt2 }
+	circuit AND s1~shmt2 { 2bit1, ~shmt2 }
+	circuit OR 4bit1 { s1shmt2, s1~shmt2 }
+
+	circuit AND s0shmt2 { 2bit4, shmt2 }
+	circuit AND s0~shmt2 { 2bit0, ~shmt2 }
+	circuit OR 4bit0 { s0shmt2, s0~shmt2 }
+
+  ######
+  #8bit
+  ######
+
+	circuit AND s31shmt3 { extend, shmt3 }
+	circuit AND s31~shmt3 { 4bit31, ~shmt3 }
+	circuit OR 8bit31 { s31shmt3, s31~shmt3 }
+
+	circuit AND s30shmt3 { extend, shmt3 }
+	circuit AND s30~shmt3 { 4bit30, ~shmt3 }
+	circuit OR 8bit30 { s30shmt3, s30~shmt3 }
+
+	circuit AND s29shmt3 { extend, shmt3 }
+	circuit AND s29~shmt3 { 4bit29, ~shmt3 }
+	circuit OR 8bit29 { s29shmt3, s29~shmt3 }
+
+	circuit AND s28shmt3 { extend, shmt3 }
+	circuit AND s28~shmt3 { 4bit28, ~shmt3 }
+	circuit OR 8bit28 { s28shmt3, s28~shmt3 }
+
+	circuit AND s27shmt3 { extend, shmt3 }
+	circuit AND s27~shmt3 { 4bit27, ~shmt3 }
+	circuit OR 8bit27 { s27shmt3, s27~shmt3 }
+
+	circuit AND s26shmt3 { extend, shmt3 }
+	circuit AND s26~shmt3 { 4bit26, ~shmt3 }
+	circuit OR 8bit26 { s26shmt3, s26~shmt3 }
+
+	circuit AND s25shmt3 { extend, shmt3 }
+	circuit AND s25~shmt3 { 4bit25, ~shmt3 }
+	circuit OR 8bit25 { s25shmt3, s25~shmt3 }
+
+	circuit AND s24shmt3 { extend, shmt3 }
+	circuit AND s24~shmt3 { 4bit24, ~shmt3 }
+	circuit OR 8bit24 { s24shmt3, s24~shmt3 }
+
+	circuit AND s23shmt3 { 4bit31, shmt3 }
+	circuit AND s23~shmt3 { 4bit23, ~shmt3 }
+	circuit OR 8bit23 { s23shmt3, s23~shmt3 }
+
+	circuit AND s22shmt3 { 4bit30, shmt3 }
+	circuit AND s22~shmt3 { 4bit22, ~shmt3 }
+	circuit OR 8bit22 { s22shmt3, s22~shmt3 }
+
+	circuit AND s21shmt3 { 4bit29, shmt3 }
+	circuit AND s21~shmt3 { 4bit21, ~shmt3 }
+	circuit OR 8bit21 { s21shmt3, s21~shmt3 }
+
+	circuit AND s20shmt3 { 4bit28, shmt3 }
+	circuit AND s20~shmt3 { 4bit20, ~shmt3 }
+	circuit OR 8bit20 { s20shmt3, s20~shmt3 }
+
+	circuit AND s19shmt3 { 4bit27, shmt3 }
+	circuit AND s19~shmt3 { 4bit19, ~shmt3 }
+	circuit OR 8bit19 { s19shmt3, s19~shmt3 }
+
+	circuit AND s18shmt3 { 4bit26, shmt3 }
+	circuit AND s18~shmt3 { 4bit18, ~shmt3 }
+	circuit OR 8bit18 { s18shmt3, s18~shmt3 }
+
+	circuit AND s17shmt3 { 4bit25, shmt3 }
+	circuit AND s17~shmt3 { 4bit17, ~shmt3 }
+	circuit OR 8bit17 { s17shmt3, s17~shmt3 }
+
+	circuit AND s16shmt3 { 4bit24, shmt3 }
+	circuit AND s16~shmt3 { 4bit16, ~shmt3 }
+	circuit OR 8bit16 { s16shmt3, s16~shmt3 }
+
+	circuit AND s15shmt3 { 4bit23, shmt3 }
+	circuit AND s15~shmt3 { 4bit15, ~shmt3 }
+	circuit OR 8bit15 { s15shmt3, s15~shmt3 }
+
+	circuit AND s14shmt3 { 4bit22, shmt3 }
+	circuit AND s14~shmt3 { 4bit14, ~shmt3 }
+	circuit OR 8bit14 { s14shmt3, s14~shmt3 }
+
+	circuit AND s13shmt3 { 4bit21, shmt3 }
+	circuit AND s13~shmt3 { 4bit13, ~shmt3 }
+	circuit OR 8bit13 { s13shmt3, s13~shmt3 }
+
+	circuit AND s12shmt3 { 4bit20, shmt3 }
+	circuit AND s12~shmt3 { 4bit12, ~shmt3 }
+	circuit OR 8bit12 { s12shmt3, s12~shmt3 }
+
+	circuit AND s11shmt3 { 4bit19, shmt3 }
+	circuit AND s11~shmt3 { 4bit11, ~shmt3 }
+	circuit OR 8bit11 { s11shmt3, s11~shmt3 }
+
+	circuit AND s10shmt3 { 4bit18, shmt3 }
+	circuit AND s10~shmt3 { 4bit10, ~shmt3 }
+	circuit OR 8bit10 { s10shmt3, s10~shmt3 }
+
+	circuit AND s9shmt3 { 4bit17, shmt3 }
+	circuit AND s9~shmt3 { 4bit9, ~shmt3 }
+	circuit OR 8bit9 { s9shmt3, s9~shmt3 }
+
+	circuit AND s8shmt3 { 4bit16, shmt3 }
+	circuit AND s8~shmt3 { 4bit8, ~shmt3 }
+	circuit OR 8bit8 { s8shmt3, s8~shmt3 }
+
+	circuit AND s7shmt3 { 4bit15, shmt3 }
+	circuit AND s7~shmt3 { 4bit7, ~shmt3 }
+	circuit OR 8bit7 { s7shmt3, s7~shmt3 }
+
+	circuit AND s6shmt3 { 4bit14, shmt3 }
+	circuit AND s6~shmt3 { 4bit6, ~shmt3 }
+	circuit OR 8bit6 { s6shmt3, s6~shmt3 }
+
+	circuit AND s5shmt3 { 4bit13, shmt3 }
+	circuit AND s5~shmt3 { 4bit5, ~shmt3 }
+	circuit OR 8bit5 { s5shmt3, s5~shmt3 }
+
+	circuit AND s4shmt3 { 4bit12, shmt3 }
+	circuit AND s4~shmt3 { 4bit4, ~shmt3 }
+	circuit OR 8bit4 { s4shmt3, s4~shmt3 }
+
+	circuit AND s3shmt3 { 4bit11, shmt3 }
+	circuit AND s3~shmt3 { 4bit3, ~shmt3 }
+	circuit OR 8bit3 { s3shmt3, s3~shmt3 }
+
+	circuit AND s2shmt3 { 4bit10, shmt3 }
+	circuit AND s2~shmt3 { 4bit2, ~shmt3 }
+	circuit OR 8bit2 { s2shmt3, s2~shmt3 }
+
+	circuit AND s1shmt3 { 4bit9, shmt3 }
+	circuit AND s1~shmt3 { 4bit1, ~shmt3 }
+	circuit OR 8bit1 { s1shmt3, s1~shmt3 }
+
+	circuit AND s0shmt3 { 4bit8, shmt3 }
+	circuit AND s0~shmt3 { 4bit0, ~shmt3 }
+	circuit OR 8bit0 { s0shmt3, s0~shmt3 }
+
+  ######
+  #16bit
+  ######
+
+	circuit AND s31shmt4 { extend, shmt4 }
+	circuit AND s31~shmt4 { 8bit31, ~shmt4 }
+	circuit OR 16bit31 { s31shmt4, s31~shmt4 }
+
+	circuit AND s30shmt4 { extend, shmt4 }
+	circuit AND s30~shmt4 { 8bit30, ~shmt4 }
+	circuit OR 16bit30 { s30shmt4, s30~shmt4 }
+
+	circuit AND s29shmt4 { extend, shmt4 }
+	circuit AND s29~shmt4 { 8bit29, ~shmt4 }
+	circuit OR 16bit29 { s29shmt4, s29~shmt4 }
+
+	circuit AND s28shmt4 { extend, shmt4 }
+	circuit AND s28~shmt4 { 8bit28, ~shmt4 }
+	circuit OR 16bit28 { s28shmt4, s28~shmt4 }
+
+	circuit AND s27shmt4 { extend, shmt4 }
+	circuit AND s27~shmt4 { 8bit27, ~shmt4 }
+	circuit OR 16bit27 { s27shmt4, s27~shmt4 }
+
+	circuit AND s26shmt4 { extend, shmt4 }
+	circuit AND s26~shmt4 { 8bit26, ~shmt4 }
+	circuit OR 16bit26 { s26shmt4, s26~shmt4 }
+
+	circuit AND s25shmt4 { extend, shmt4 }
+	circuit AND s25~shmt4 { 8bit25, ~shmt4 }
+	circuit OR 16bit25 { s25shmt4, s25~shmt4 }
+
+	circuit AND s24shmt4 { extend, shmt4 }
+	circuit AND s24~shmt4 { 8bit24, ~shmt4 }
+	circuit OR 16bit24 { s24shmt4, s24~shmt4 }
+
+	circuit AND s23shmt4 { extend, shmt4 }
+	circuit AND s23~shmt4 { 8bit23, ~shmt4 }
+	circuit OR 16bit23 { s23shmt4, s23~shmt4 }
+
+	circuit AND s22shmt4 { extend, shmt4 }
+	circuit AND s22~shmt4 { 8bit22, ~shmt4 }
+	circuit OR 16bit22 { s22shmt4, s22~shmt4 }
+
+	circuit AND s21shmt4 { extend, shmt4 }
+	circuit AND s21~shmt4 { 8bit21, ~shmt4 }
+	circuit OR 16bit21 { s21shmt4, s21~shmt4 }
+
+	circuit AND s20shmt4 { extend, shmt4 }
+	circuit AND s20~shmt4 { 8bit20, ~shmt4 }
+	circuit OR 16bit20 { s20shmt4, s20~shmt4 }
+
+	circuit AND s19shmt4 { extend, shmt4 }
+	circuit AND s19~shmt4 {8bit19, ~shmt4 }
+	circuit OR 16bit19 { s19shmt4, s19~shmt4 }
+
+	circuit AND s18shmt4 { extend, shmt4 }
+	circuit AND s18~shmt4 { 8bit18, ~shmt4 }
+	circuit OR 16bit18 { s18shmt4, s18~shmt4 }
+
+	circuit AND s17shmt4 { extend, shmt4 }
+	circuit AND s17~shmt4 { 8bit17, ~shmt4 }
+	circuit OR 16bit17 { s17shmt4, s17~shmt4 }
+
+	circuit AND s16shmt4 { extend, shmt4 }
+	circuit AND s16~shmt4 { 8bit16, ~shmt4 }
+	circuit OR 16bit16 { s16shmt4, s16~shmt4 }
+
+	circuit AND s15shmt4 { 8bit31, shmt4 }
+	circuit AND s15~shmt4 { 8bit15, ~shmt4 }
+	circuit OR 16bit15 { s15shmt4, s15~shmt4 }
+
+	circuit AND s14shmt4 { 8bit30, shmt4 }
+	circuit AND s14~shmt4 { 8bit14, ~shmt4 }
+	circuit OR 16bit14 { s14shmt4, s14~shmt4 }
+
+	circuit AND s13shmt4 { 8bit29, shmt4 }
+	circuit AND s13~shmt4 { 8bit13, ~shmt4 }
+	circuit OR 16bit13 { s13shmt4, s13~shmt4 }
+
+	circuit AND s12shmt4 { 8bit28, shmt4 }
+	circuit AND s12~shmt4 { 8bit12, ~shmt4 }
+	circuit OR 16bit12 { s12shmt4, s12~shmt4 }
+
+	circuit AND s11shmt4 { 8bit27, shmt4 }
+	circuit AND s11~shmt4 { 8bit11, ~shmt4 }
+	circuit OR 16bit11 { s11shmt4, s11~shmt4 }
+
+	circuit AND s10shmt4 { 8bit26, shmt4 }
+	circuit AND s10~shmt4 { 8bit10, ~shmt4 }
+	circuit OR 16bit10 { s10shmt4, s10~shmt4 }
+
+	circuit AND s9shmt4 { 8bit25, shmt4 }
+	circuit AND s9~shmt4 { 8bit9, ~shmt4 }
+	circuit OR 16bit9 { s9shmt4, s9~shmt4 }
+
+	circuit AND s8shmt4 { 8bit24, shmt4 }
+	circuit AND s8~shmt4 { 8bit8, ~shmt4 }
+	circuit OR 16bit8 { s8shmt4, s8~shmt4 }
+
+	circuit AND s7shmt4 { 8bit23, shmt4 }
+	circuit AND s7~shmt4 { 8bit7, ~shmt4 }
+	circuit OR 16bit7 { s7shmt4, s7~shmt4 }
+
+	circuit AND s6shmt4 { 8bit22, shmt4 }
+	circuit AND s6~shmt4 { 8bit6, ~shmt4 }
+	circuit OR 16bit6 { s6shmt4, s6~shmt4 }
+
+	circuit AND s5shmt4 { 8bit21, shmt4 }
+	circuit AND s5~shmt4 { 8bit5, ~shmt4 }
+	circuit OR 16bit5 { s5shmt4, s5~shmt4 }
+
+	circuit AND s4shmt4 { 8bit20, shmt4 }
+	circuit AND s4~shmt4 { 8bit4, ~shmt4 }
+	circuit OR 16bit4 { s4shmt4, s4~shmt4 }
+
+	circuit AND s3shmt4 { 8bit19, shmt4 }
+	circuit AND s3~shmt4 { 8bit3, ~shmt4 }
+	circuit OR 16bit3 { s3shmt4, s3~shmt4 }
+
+	circuit AND s2shmt4 { 8bit18, shmt4 }
+	circuit AND s2~shmt4 { 8bit2, ~shmt4 }
+	circuit OR 16bit2 { s2shmt4, s2~shmt4 }
+
+	circuit AND s1shmt4 { 8bit17, shmt4 }
+	circuit AND s1~shmt4 { 8bit1, ~shmt4 }
+	circuit OR 16bit1 { s1shmt4, s1~shmt4 }
+
+	circuit AND s0shmt4 { 8bit16, shmt4 }
+	circuit AND s0~shmt4 { 8bit0, ~shmt4 }
+	circuit OR 16bit0 { s0shmt4, s0~shmt4 }
+
+  outputs { 16bit[31:0] }

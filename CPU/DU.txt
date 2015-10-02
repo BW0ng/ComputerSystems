@@ -1,14 +1,14 @@
 # Decoder Unit
 
 inputNames { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
-outputNames { f1,f0,inva,invb,cin,selectImm,signExtend,selectShamt,selectALU,selectMultiply,selectSLT,selectSRA }
+outputNames { f1,f0,inva,invb,cin,selectImm,signExtend,selectShamt,selectALU,selectMultiply,selectSLT,selectSrlv} #,aaa,bbb,ccc,ddd,eee,fff}
 
 circuit ADDU addu { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
 circuit ADD add { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
 circuit ADDI addi { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
-circuit AND and { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
+circuit ANDintsr and { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
 circuit ANDI andi { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
-circuit OR or { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
+circuit ORintsr or { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
 circuit ORI ori { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
 circuit SLT slt { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
 circuit SLTI slti { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
@@ -17,11 +17,14 @@ circuit SRLV srlv { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
 circuit SRA sra { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
 circuit SUB sub { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
 circuit MULT mult { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
-circuit XOR xor { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
+circuit XORintsr xor { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
 circuit XORI xori { op[5:0], rs[4:0], rt[4:0], rd[4:0], sh[4:0], f[5:0] }
 
 #Curcuit ALU
 circuit ALU_Fselector alu { or,ori,xor,xori,and,andi } #f1 & f0
+
+#circuit OR aluf0or1 {alu.f0,addi}
+#circuit OR aluf0or2 {alu.f0,addi}
 
 #inva
 circuit ZERO z {sub}
@@ -33,20 +36,32 @@ circuit OR tior3 { xori,tior1 }
 circuit OR tior4 {tior2,tior3 }
 
 #Sigh ectended?
-circuit OR signE { addi, slti }
+circuit OR singEor { addi, slti }
+circuit OR signE { singEor,sra }
 
 #shifter using sh
 circuit OR shift { srl,sra }
 
 #ALU
-circuit OR aluor1 { slt,slti }
-circuit OR aluor2 { srl,srlv }
-circuit OR aluor3 { aluor1,aluor2 }
-circuit OR aluor4 { sra, aluor3 }
-circuit OR aluselect { aluor4,mult }
-circuit NOT ~alu { aluselect }
+circuit OR aluor1 { add,addi }
+circuit OR aluor2 { addu,and }
+circuit OR aluor3 { andi,or }
+circuit OR aluor4 { ori,slt }
+circuit OR aluor5 { slti,slti }
+circuit OR aluor7 { sub,xor }
+circuit OR aluor8 { xori,aluor1 }
+circuit OR aluor9 { aluor8,aluor1 }
+circuit OR aluor10 { aluor9,aluor2 }
+circuit OR aluor11 { aluor10,aluor3 }
+circuit OR aluor12 { aluor11,aluor4 }
+circuit OR aluor13 { aluor12,aluor5 }
+circuit OR aluor14 { aluor13,aluor13 }
+circuit OR aluor15 { aluor14,aluor7 }
+
 
 #SLT
-circuit OR slt_selector { slt,slti }
+circuit OR selectSLT { slt,slti }
+circuit OR subtract { selectSLT,sub }
 
-outputs { alu.f1 , alu.f0 , z , sub , sub , tior4 , signE , shift , ~alu , mult , slt_selector , sra }
+#outputs{ addu,add,addi,and,andi,or,ori,slt,slti,srl,srlv,sra,sub,mult,xor,xori }
+outputs { alu.f1 , alu.f0 , z , subtract , subtract , tior4 , signE , shift , aluor15 , mult,selectSLT,srlv}

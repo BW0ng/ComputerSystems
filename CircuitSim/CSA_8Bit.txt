@@ -3,34 +3,34 @@
 	#FA outputs {carry,sum}
 	#inputNames {0,a1,b1,a2,b2,a3,b3,a4,b4,a5,b5,a6,b6,a7,b7,a8,b8}
 	#outputNames {s1,s2,s3,s4,s5,s6,s7,s8,carry}
-	
+
 	inputNames {a7,a6,a5,a4,a3,a2,a1,a0,b7,b6,b5,b4,b3,b2,b1,b0,c}
 	outputNames {s7,s6,s5,s4,s3,s2,s1,s0,carry}
-	
-	
+
+
 	circuit FULLADDER fa0 {a0,b0,c}
 	circuit FULLADDER fa1 {a1,b1,fa0.carry}
 	circuit FULLADDER fa2 {a2,b2,fa1.carry}
 	circuit FULLADDER fa3 {a3,b3,fa2.carry}
-	
+
 	circuit FULLADDER fa4 {a4,b4,0}
 	circuit FULLADDER fa5 {a5,b5,fa4.carry}
 	circuit FULLADDER fa6 {a6,b6,fa5.carry}
 	circuit FULLADDER fa7 {a7,b7,fa6.carry}
-	
+
 	circuit FULLADDER fa4a {a4,b4,1}
 	circuit FULLADDER fa5a {a5,b5,fa4a.carry}
 	circuit FULLADDER fa6a {a6,b6,fa5a.carry}
 	circuit FULLADDER fa7a {a7,b7,fa6a.carry}
-	
+
 	circuit OR or1 {fa7.carry,fa3.carry}
 	circuit AND and1 {or1,fa7a.carry}
-	
+
 	circuit S_1Bit s0 {fa4.sum,fa4a.sum,fa3.carry}
 	circuit S_1Bit s1 {fa5.sum,fa5a.sum,fa3.carry}
 	circuit S_1Bit s2 {fa6.sum,fa6a.sum,fa3.carry}
 	circuit S_1Bit s3 {fa7.sum,fa7a.sum,fa3.carry}
-	
+
 	circuit S_1Bit s4 {fa7.carry,fa7a.carry,fa3.carry}
-	
+
 	outputs {s3,s2,s1,s0,fa3.sum,fa2.sum,fa1.sum,fa0.sum,and1}

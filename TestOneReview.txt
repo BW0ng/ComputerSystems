@@ -1,0 +1,15 @@
+Transistors
+
+  Ripple-carry adder
+		how does it work?
+
+	Carry-select adder
+		how does it work?
+		Why do we want to use it instead of ripple-carry?
+
+    Translate from Binary to Assembly, and assembly to binary,
+	given proper information.
+
+	Call a function in MIPS
+	Return from a function in MIPS
+	Constructing any Boolean function from a MUX
