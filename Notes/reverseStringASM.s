@@ -1,6 +1,4 @@
 # Topher Comment = comment Prof Cline did NOT provide in his code...
-=======
-# Topher Comment = Comment Prof Cline did NOT but in his code...
 #Steps
 # First: Write C code
 # Second: Comment out C code
