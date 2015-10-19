@@ -1,4 +1,4 @@
-//Best way of wtiring mips program
+//Best way of writing mips program
 //Write program in C, then convert mips
 
 int main(int argc, char *argv[]) {
