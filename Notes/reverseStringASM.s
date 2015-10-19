@@ -1,8 +1,12 @@
+<<<<<<< Updated upstream
 # Topher Comment = comment Prof Cline did NOT provide in his code...
+=======
+# Topher Comment = Comment Prof Cline did NOT but in his code...
+>>>>>>> Stashed changes
 #Steps
 # First: Write C code
 # Second: Comment out C code
-# Third: After commented code's location, write MIPs code
+# Third: After Commented code's location, write MIPs code
 # Fourth: Celebrate
 
 #-----------------------------------------------------
