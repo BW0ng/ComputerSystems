@@ -2,6 +2,15 @@
 //Name: ChrisTopher Thomas
 //CWID: 11652560
 
+/*
+  Program 3: MIPS simulator
+  currentProjects:
+    - interpret(String File)
+      - interpret hexCode to main memory Registers
+  toDo:
+    - Everything...
+*/
+
 import java.io.*;
 import java.lang.Math;
 import java.util.*;
@@ -40,7 +49,7 @@ class MIPSsim {
       $31 = ra -> return adress
   */
   private int[] GPR = new int[32];
-  private int PC,nPC,LO,HI;
+  private int PC,nPC,LO,HI=0;
 
   /*
       Start of Simulator
@@ -51,7 +60,6 @@ class MIPSsim {
     startProgram = System.currentTimeMillis();
     for(int i=0;i<mainMemorySize;i++) MM[i]=0;
     for(int i=0;i<32;i++) GPR[i]=0;
-
 
     readFile();
     System.out.println(PC);
@@ -65,51 +73,87 @@ class MIPSsim {
     endProgram();
   }//MIPSsim
 
-  //Interpret line from input file, extact hex code, convert to decimal and save
-  private void interpret(String line) {
-    boolean string1Hex=false;
-    String string1="";
-    String string2="";
-    int decimal1=0;
-    int decimal2=0;
 
-    //if line is not blank or commented out read line
-    if(line.length() > 0 && !(line.charAt(0)=='#' || line.charAt(0)== ' ')) {
+  ////Interpret line from input file
+  private void interpretFile(String line) {
+    boolean isIndexSpot=true;
+    String temp="";
+    String indexSpot="";
+    ArrayList<String> hexCode=new ArrayList<>();
 
-      //init split
-      String[] splited = line.split("\\s+");
+    //if line is not blank
+    if(line.length()>0) {
+      //loop through each character on line
+      for (int i=0;i<line.length();i++) {
+        //if comment break
+        if(line.charAt(i)=='#')break;
 
-      if(splited.length >= 2) {
-        String h1 = splited[0];
-        String h2 = splited[1];
+        //if index spot
+        if(line.charAt(i) == '[') {
+          //if save location is in main Memory
+          if(line.charAt(i+1)=='0' && line.charAt(i+2)=='x') {
+            for (int j=i+3;j<line.length();j++) {
+              if(line.charAt(j)==']') break;
+              indexSpot+=line.charAt(j);
+              i=j;
+            }
+          }
+          //if save location is a register
+          else {
+            for(int j=i+1;j<line.length();j++) {
+              if(line.charAt(j)==']') break;
+              indexSpot+=line.charAt(j);
+              i=j;
+            }
+          }
+          isIndexSpot=false;
+        }
 
-        //check to see if first part is hexcode
-        if(h1.charAt(1)=='0') {string1 = h1.substring(3,splited[0].length()-1);string1Hex=true;}
-        //if not hexCode, must be [PC]..ect;
-        else {string1 = h1.substring(1,splited[0].length()-1);string1Hex=false;}
-        ////get second hex code (or in case of else statement first hexcode on line)
-        string2 = h2.substring(2,splited[1].length());
+        //interpret hex code(instructions)
+        //System.out.println(line.charAt(i) + " " + line.charAt(i+1));
+        if(line.charAt(i-1)=='0' && line.charAt(i)=='x' && !isIndexSpot) {
+          for (int j=i+1;j<line.length();j++) {
+            if(line.charAt(j)==' ') break;
+            temp+=line.charAt(j);
+            i=j;
+          }
+          if(temp.length()==8) hexCode.add(temp);
+          temp="";
+        }
       }
 
-      //check to see if string1 is hexcode or not then parse to int
-      if(string1.length()==8) {
-        decimal1 = Integer.parseInt(string1,16);
-      }
-      //parse second string(hexcode) to int
-      decimal2 = Integer.parseInt(string2,16);
+      //If line cointained information needed for interpretation
+      if(!isIndexSpot) {
 
-      //if line(string1) not empty, save decimal2(hexCode2) to memeory at index decimal1(String 1)
-      if(!string1.equals("") && string1Hex) {
-        MM[decimal1/4] = decimal2;
-      }else if(string1.equals("PC") && !string1Hex) {
-        PC=decimal2;
-        nPC=PC+4;
-      }else if(string1.charAt(0)=='R' && !string1Hex) {
-        string1=string1.substring(1);
-        int rIndex = Integer.parseInt(string1);
-        GPR[rIndex] = decimal2;
+        //Save interpreted code
+        if(indexSpot.equals("PC")) {
+          PC = Integer.parseInt(hexCode.get(0),16);
+        }
+        else if (indexSpot.charAt(0)=='R') {
+          String registerLocation="";
+          for(int i=1;i<indexSpot.length();i++){
+            registerLocation+=indexSpot.charAt(i);
+          }
+          int registerLocationIndex = Integer.parseInt(registerLocation);
+          GPR[registerLocationIndex] = Integer.parseInt(hexCode.get(0),16);
+          System.out.println(registerLocationIndex);
+          System.out.println(hexCode.get(0));
+        }
+        //Other two pointless, only do stuff with final else statement
+        else {
+          int indexRegister = Integer.parseInt(indexSpot,16);
+          indexRegister+=PC;
+          //save hexCode.get(j) to main memeory index at indexRegister
+        }
       }
-    }
+
+
+      //System.out.print("Index: " + indexSpot);
+      //for(int i=0;i<hexCode.size();i++)
+      //  System.out.print(",  Hex Code: " + hexCode.get(i));
+      //System.out.println();
+
+    } //if
   }
   //Read in input file
   private void readFile() {
@@ -118,7 +162,7 @@ class MIPSsim {
       bufferedReader = new BufferedReader(fileReader);
       String line;
       while((line = bufferedReader.readLine()) != null) {
-        interpret(line);
+        interpretFile(line);
       }//while
     }//try
     catch(FileNotFoundException e) {e.printStackTrace();}

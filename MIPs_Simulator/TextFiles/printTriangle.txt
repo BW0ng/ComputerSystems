@@ -20,9 +20,9 @@
 [0x00000028]	0xafb00008  sw $16, 8($29)                  ; 42: sw $s0, 8($sp)
 [0x0000002c]	0xafb10004  sw $17, 4($29)                  ; 43: sw $s1, 4($sp)
 [0x00000030]	0xafbf0000  sw $31, 0($29)                  ; 44: sw $ra, 0($sp)
-[0x00000034]	0x34020004  ori $2, $0, 4                   ; 47: li $v0, 4  
-[0x00000038]	0x3c040001  lui $4, 4097 [prompt]           ; 48: la $a0, prompt  
-[0x0000003c]	0x0000000c  syscall                         ; 49: syscall        
+[0x00000034]	0x34020004  ori $2, $0, 4                   ; 47: li $v0, 4
+[0x00000038]	0x3c040001  lui $4, 4097 [prompt]           ; 48: la $a0, prompt
+[0x0000003c]	0x0000000c  syscall                         ; 49: syscall
 [0x00000040]	0x34020005  ori $2, $0, 5                   ; 52: li $v0, 5
 [0x00000044]	0x0000000c  syscall                         ; 53: syscall
 [0x00000048]	0x00028021  addu $16, $0, $2                ; 54: move $s0, $v0
@@ -49,21 +49,20 @@
 [0x00000094]	0x0109082a  slt $1, $8, $9                  ; 111: bge $t0, $t1, afterPrintXloop
 [0x00000098]	0x10200008  beq $1, $0, 32 [afterPrintXloop-0x00400098]
 [0x0000009c]	0x00000000  nop                             ; 112: nop
-[0x000000a0]	0x34020004  ori $2, $0, 4                   ; 115: li $v0, 4  
-[0x000000a4]	0x3c010001  lui $1, 4097 [XX]               ; 116: la $a0, XX  
+[0x000000a0]	0x34020004  ori $2, $0, 4                   ; 115: li $v0, 4
+[0x000000a4]	0x3c010001  lui $1, 4097 [XX]               ; 116: la $a0, XX
 [0x000000a8]	0x34240011  ori $4, $1, 17 [XX]
-[0x000000ac]	0x0000000c  syscall                         ; 117: syscall   
+[0x000000ac]	0x0000000c  syscall                         ; 117: syscall
 [0x000000b0]	0x25080001  addiu $8, $8, 1                 ; 120: addiu $t0, $t0, 1
 [0x000000b4]	0x08000025  j 0x00400094 [printXloop]       ; 121: j printXloop
 [0x000000b8]	0x00000000  nop                             ; 122: nop
-[0x000000bc]	0x34020004  ori $2, $0, 4                   ; 126: li $v0, 4  
-[0x000000c0]	0x3c010001  lui $1, 4097 [newline]          ; 127: la $a0, newline  
+[0x000000bc]	0x34020004  ori $2, $0, 4                   ; 126: li $v0, 4
+[0x000000c0]	0x3c010001  lui $1, 4097 [newline]          ; 127: la $a0, newline
 [0x000000c4]	0x34240013  ori $4, $1, 19 [newline]
-[0x000000c8]	0x0000000c  syscall                         ; 128: syscall 
+[0x000000c8]	0x0000000c  syscall                         ; 128: syscall
 [0x000000cc]	0x03e00008  jr $31                          ; 131: jr $ra
 [0x000000d0]	0x00000000  nop                             ; 132: nop
 
 # Data segment
 [0x00010000]		        0x65746e45  0x20612072  0x626d756e  0x203a7265
 [0x00010010]		        0x0a005800  0x00000000  0x00000000  0x00000000
-
