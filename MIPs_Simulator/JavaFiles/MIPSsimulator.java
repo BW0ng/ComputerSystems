@@ -5,9 +5,8 @@
 /*
   Program 3: MIPS simulator
   currentProjects:
-    - interpret(String File)
-      - interpret hexCode to main memory Registers
   toDo:
+    - Integer.toBinaryString(int);
     - Everything...
 */
 
@@ -18,7 +17,7 @@ public class MIPSsimulator {
 
   public static void main(String[] args) {
     System.out.println(" ChrisTopher C. Thomas");
-    System.out.println("----------------------");
+    System.out.println("-----------------------");
     File file = new File("../TextFiles/" + args[0] + ".txt");
     new MIPSsim(file);
   }//main
@@ -62,12 +61,14 @@ class MIPSsim {
     for(int i=0;i<32;i++) GPR[i]=0;
 
     readFile();
-    System.out.println(PC);
+    interpretMIPS();
+    /*
+    System.out.println("PC: " + PC);
     for(int i=0;i<32;i++)
       if(GPR[i]!=0) System.out.println("Index: " + i + "   GPR:" +GPR[i]);
     for (int i=0;i<mainMemorySize;i++)
-      if(MM[i]!=0) System.out.println("Index: " + i + "   MM:" + Integer.toBinaryString(MM[i]));
-
+      if(MM[i]!=0) System.out.println("Index: " + i + "   MM:" + MM[i]);
+      */
 
     //End of Program
     endProgram();
@@ -75,7 +76,7 @@ class MIPSsim {
 
 
   ////Interpret line from input file
-  private void interpretFile(String line) {
+  private void parseFile(String line) {
     boolean isIndexSpot=true;
     String temp="";
     String indexSpot="";
@@ -127,7 +128,8 @@ class MIPSsim {
 
         //Save interpreted code
         if(indexSpot.equals("PC")) {
-          PC = Integer.parseInt(hexCode.get(0),16);
+          PC = (Integer.parseInt(hexCode.get(0),16)/4);
+          nPC=PC+4;
         }
         else if (indexSpot.charAt(0)=='R') {
           String registerLocation="";
@@ -136,22 +138,14 @@ class MIPSsim {
           }
           int registerLocationIndex = Integer.parseInt(registerLocation);
           GPR[registerLocationIndex] = Integer.parseInt(hexCode.get(0),16);
-          System.out.println(registerLocationIndex);
-          System.out.println(hexCode.get(0));
         }
-        //Other two pointless, only do stuff with final else statement
         else {
           int indexRegister = Integer.parseInt(indexSpot,16);
-          indexRegister+=PC;
-          //save hexCode.get(j) to main memeory index at indexRegister
+          int slot = indexRegister/4;
+          for(int i=0;i<hexCode.size();i++)
+            MM[slot+i] = Integer.parseInt(hexCode.get(i),16);
         }
       }
-
-
-      //System.out.print("Index: " + indexSpot);
-      //for(int i=0;i<hexCode.size();i++)
-      //  System.out.print(",  Hex Code: " + hexCode.get(i));
-      //System.out.println();
 
     } //if
   }
@@ -162,7 +156,7 @@ class MIPSsim {
       bufferedReader = new BufferedReader(fileReader);
       String line;
       while((line = bufferedReader.readLine()) != null) {
-        interpretFile(line);
+        parseFile(line);
       }//while
     }//try
     catch(FileNotFoundException e) {e.printStackTrace();}
@@ -176,7 +170,47 @@ class MIPSsim {
     }//finally
   }//readFile
 
-  /*
+  private void interpretMIPS() {
+    int test = MM[0];
+    String binary = convertToBinary(test);
+    System.out.println(binary);
+    int[] a = convertToIntArray(binary);
+    int[] b = convertToIntArray(maskORI);
+    if(Arrays.equals(AND(a,b),instrORI)) System.out.println("Aweosme");
+    int[] apples = AND(a,b);
+    for(int i=0;i<32;i++) {
+      System.out.print(apples[i]);
+    }
+    System.out.println();
+    for(int i=0;i<32;i++) {
+      System.out.print(instrORI[i]);
+    }
+  }
+
+  private final int[] ZERO = {
+    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+  };
+  public int[] AND(int[] a,int[] b) {
+    int[] returnVal = new int[32];
+    for (int i=0;i<32;i++) {
+      returnVal[i] = a[i]*b[i];
+    }
+    return returnVal;
+  }
+
+  private int[] convertToIntArray(String a) {
+    int[] returnVal = new int[32];
+    for(int i=0;i<a.length();i++) {
+      char c = a.charAt(i);
+      int value = Character.getNumericValue(c);
+      //System.out.print("" + cd);
+      returnVal[i] = value;
+
+    }
+    System.out.println();
+    return returnVal;
+  }
+
   //Check mips instructions
   private void mipsInstructions () {
     if() { //ADD - Add(with overflow)
@@ -309,7 +343,7 @@ class MIPSsim {
       System.out.println("Error - MIPSindtructions: Broken");
     }
   }
-
+  /*
   private systemCall() {
     if() {
       System.out.println("a0: " + gpr[]);
@@ -330,6 +364,15 @@ class MIPSsim {
   }
   */
 
+
+  //Convert int to Binary, if length not 32 add zero's to front
+  private String convertToBinary(int decimal) {
+    String binary = Integer.toBinaryString(decimal);
+    while (binary.length()<32) {
+      binary = '0' + binary;
+    }
+    return binary;
+  }
 
   //End Program: No methods past this point
   private void endProgram() {
@@ -400,5 +443,48 @@ class MIPSsim {
     "SLTI","SLTIU","SLTU","SRA","SRL","SRLV","SUB",
     "SUBU","SW","SB","SYSCALL","XOR","XORI"
   };
+
+  private int[] instrADD = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0}; //ADD
+  private int[] instrADDI = {0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //ADDI
+  private int[] instrADDIU = {0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //ADDIU
+  private int[] instrADDU = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1}; //ADDU
+  private int[] instrAND = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0}; //AND
+  private int[] instrANDI = {0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //ANDI
+  private int[] instrBEQ = {0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //BEQ
+  private int[] instrBGEZ = {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //BGEZ
+  private int[] instrBGEZAL = {0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //BGEZAL
+  private int[] instrBGTZ = {0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //BGTZ
+  private int[] instrBLEZ = {0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //BLEZ
+  private int[] instrBLTZ = {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //BLTZ
+  private int[] instrBLTZAL = {0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //BLTZAL
+  private int[] instrBNE = {0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //BNE
+  private int[] instrDIV = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,0}; //DIV
+  private int[] instrJ = {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //J
+  private int[] instrJAL = {0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //JAL
+  private int[] instrJR = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0}; //JR
+  private int[] instrLB = {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //LB
+  private int[] instrLUI = {0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //LUI
+  private int[] instrLW = {1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //LW
+  private int[] instrMFHI = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0}; //MFHI
+  private int[] instrMFLO = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0}; //MFLO
+  private int[] instrMULT = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0}; //MULT
+  private int[] instrOR = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,1}; //OR
+  private int[] instrORI = {0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //ORI
+  private int[] instrSLL = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //SLL
+  private int[] instrSLLV = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0}; //SLLV
+  private int[] instrSLT = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,0}; //SLT
+  private int[] instrSLTI = {0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //SLTI
+  private int[] instrSLTIU = {0,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //SLTIU
+  private int[] instrSLTU = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,1}; //SLTU
+  private int[] instrSRA = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1}; //SRA
+  private int[] instrSRL = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0}; //SRL
+  private int[] instrSRLV = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0}; //SRLV
+  private int[] instrSUB = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0}; //SUB
+  private int[] instrSUBU = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,1}; //SUBU
+  private int[] instrSW = {1,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //SW
+  private int[] instrSB = {1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //SB
+  private int[] instrSYSCALL = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0}; //SYSCALL
+  private int[] instrXOR = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,1,0}; //XOR
+  private int[] instrXORI = {0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //XORI
 
 }//MIPSsim
