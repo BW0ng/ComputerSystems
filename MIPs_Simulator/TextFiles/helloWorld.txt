@@ -18,7 +18,7 @@
 
 # main function
 [0x00000024]	0x34020004  ori $2, $0, 4                   ; 39: li $v0, 4       # syscall 4 (print_str)
-[0x00000028]	0x34047000  ori $4, $0, 0x7000              ;   : li $4, 0x7000      
+[0x00000028]	0x34047000  ori $4, $0, 0x7000              ;   : li $4, 0x7000
 [0x0000002c]	0x0000000c  syscall                         ; 41: syscall         # print the string
 [0x00000030]	0x03e00008  jr $31                          ; 43: jr $ra          # retrun to caller
 
